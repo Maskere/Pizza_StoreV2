@@ -8,24 +8,93 @@ namespace Pizza_StoreV2.Catalogs
 {
     public class PizzaCatalog
     {
-        private Dictionary<int, Pizza> pizzas { get; }
+        public List<Pizza> Pizzas;
+        private static PizzaCatalog _instance;
         public PizzaCatalog()
         {
-            pizzas = new Dictionary<int, Pizza>();
-            pizzas.Add(1, new Pizza() { Id = 1, Name = "Cheese_pizza", Description = " Maden of cheese", Price = 98, ImageName = "Cheese_pizza.jfif" });
-            pizzas.Add(2, new Pizza() { Id = 2, Name = "Bufalla_pizza", Description = " Maden of bufalla", Price = 59, ImageName = "Bufalla_pizza.jfif" });
-            pizzas.Add(3, new Pizza() { Id = 3, Name = "Chicken_pizza", Description = " Maden of chicken", Price = 120, ImageName = "Chicken_pizza.jfif" });
-            pizzas.Add(4, new Pizza() { Id = 4, Name = "Mozzarella_pizza", Description = " Maden of mozzarella", Price = 77, ImageName = "Mozzarella_pizza.jfif" });
-            pizzas.Add(5, new Pizza() { Id = 5, Name = "Vegetable_pizza", Description = " Maden of vegetars", Price = 88, ImageName = "Vegetable_pizza.jfif" });
+            Pizzas = new List<Pizza>();
+            //Pizzas.Add(new Pizza() { Name = "Calzone", Price = 95, PizzaId = 1 });
+            //Pizzas.Add(new Pizza() { Name = "Peperoni", Price = 75, PizzaId = 2 });
+            //Pizzas.Add(new Pizza() { Name = "Vesuvio", Price = 95, PizzaId = 3 });
         }
-
-        public Dictionary<int, Pizza> AllPizzas()
+        public int Count
         {
-            return pizzas;
+            get { return Pizzas.Count; }
+        }
+        public static PizzaCatalog Instance 
+        {
+            get
+            {
+                if (_instance == null) { _instance = new PizzaCatalog(); }
+                return _instance;
+            }
+        }
+        public Pizza GetNewPizza(string pizzaName, int pizzaPrice, int pizzaId)
+        {
+            Pizza pizza = new Pizza();
+            pizza.Name = pizzaName;
+            pizza.Price = pizzaPrice;
+            pizza.PizzaId = pizzaId;
+            if (Pizzas[pizzaId] != null)
+                return null;
+            return pizza;
+        }
+        public void UpdatePizza(Pizza updatePizza)
+        {
+            if (Pizzas.Contains(updatePizza))
+            {
+                updatePizza = null;
+            }
+            else
+            {
+                Pizzas.RemoveAt(updatePizza.PizzaId);
+                Pizzas.Insert(updatePizza.PizzaId, updatePizza);
+            }
+        }
+        public void CreateAPizza(Pizza pizza)
+        {
+            Pizzas.Insert(pizza.PizzaId, pizza);
+        }
+        public void DeleteAPizza(int pizzaId)
+        {
+            Pizzas.Insert(pizzaId, new Pizza());
+            Pizzas.RemoveAt(pizzaId + 1);
+        }
+        public Pizza SearchForPizzaById(int pizzaId)
+        {
+            Pizza findPizza = Pizzas[pizzaId];
+            return findPizza;
+        }
+        public void Clear()
+        {
+            Pizzas.Clear();
+            Pizzas = new List<Pizza>(new Pizza[10]);
+        }
+        public void RemoveAt(int removeAt)
+        {
+            Pizzas.RemoveAt(removeAt);
+        }
+        public void PrintMenu()
+        {
+            foreach (Pizza pizza in Pizzas)
+            {
+                if (pizza != null)
+                {
+                    Console.WriteLine($"| {pizza} |");
+                }
+                else
+                {
+                    Console.WriteLine("   ...");
+                }
+            }
+        }
+        public List<Pizza> AllPizzas() 
+        {
+            return Pizzas;
         }
         public void AddPizza(Pizza pizza) 
         {
-            pizzas.Add(pizza.Id,pizza);
+            Pizzas.Add(pizza);
         }
     }
 }

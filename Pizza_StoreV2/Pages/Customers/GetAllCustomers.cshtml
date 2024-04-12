@@ -1,41 +1,39 @@
 ﻿@page
-@model Pizza_StoreV2.Pages.GetAllPizzasModel
+@model Pizza_StoreV2.Pages.Customers.GetAllCustomersModel
 @{
-    ViewData["Title"] = "GetAllPizzas";
 }
-
-<h1>Pizza catalog</h1>
+<h1>Customer catalog</h1>
 <p>
-    <a asp-page="CreatePizza">Create pizza</a>
+    <a asp-page="CreateCustomer">Create customer</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Id
+                ID
             </th>
             <th>
                 Name
             </th>
             <th>
-                Price
+                Mobilnr.:
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Pizzas)
+        @foreach (var item in Model.Customers)
         {
             if (item != null)
             {
                 <tr>
                     <td>
-                        @item.PizzaId
+                        @item.CustomerId
                     </td>
                     <td>
-                        @item.Name
+                        @item.CustomerName
                     </td>
                     <td>
-                        @item.Price
+                        @item.PhoneNumber
                     </td>
                 </tr>
             }

@@ -11,15 +11,21 @@ namespace Pizza_StoreV2.Pages
 {
     public class GetAllPizzasModel : PageModel
     {
-        private PizzaCatalog catalog;
+        private FakePizzaRepository repo;
+        private PizzaCatalog PizzaCatalog;
         public GetAllPizzasModel()
         {
-            catalog = new PizzaCatalog();
+            PizzaCatalog = new PizzaCatalog();
+            repo = FakePizzaRepository.Instance;
         }
-        public Dictionary<int, Pizza> Pizzas { get; private set; }
+        public List<Pizza> Pizzas { get; private set; }
         public IActionResult OnGet()
         {
-            Pizzas = catalog.AllPizzas();
+            Pizzas = repo.GetAllPizzas();
+            return Page();
+        }
+        public IActionResult OnPost() 
+        {
             return Page();
         }
     }

@@ -1,32 +1,38 @@
 using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Pizza_StoreV2.Catalogs;
 using Pizza_StoreV2.Models;
+using Pizza_StoreV2.Catalogs;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pizza_StoreV2.Pages.Pizzas
 {
     public class CreatePizzaModel : PageModel
     {
-        private Pizza pizza;
-
+        private FakePizzaRepository repo;
+        [BindProperty]
+        public Pizza Pizza { get; set; }
         public CreatePizzaModel()
         {
-            pizza = new Pizza();
-            
+            repo = FakePizzaRepository.Instance;
         }
-        [BindProperty]
-        public Pizza Pizza { get { return pizza; } }
-        
         public IActionResult OnPost()
         {
-
+            if (!ModelState.IsValid) 
+            {
+                
+                return Page();
+            }
+            repo.AddPizza(Pizza);
             return RedirectToPage("GetAllPizzas");
         }
-        public void OnGet() 
+        public IActionResult OnGet() 
         {
-            
+            return Page();
         }
     }
 }
