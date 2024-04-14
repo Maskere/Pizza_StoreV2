@@ -7,14 +7,14 @@ namespace Pizza_StoreV2.Models
 {
     public class FakePizzaRepository
     {
-        private List<Pizza> pizzas { get; }
+        private List<Pizza> Pizzas { get; }
         private static FakePizzaRepository _instance;
         public FakePizzaRepository() 
         {
-            pizzas = new List<Pizza>();
-            pizzas.Add(new Pizza() { Name = "Calzone", Price = 95, PizzaId = 1 });
-            pizzas.Add(new Pizza() { Name = "Peperoni", Price = 75, PizzaId = 2 });
-            pizzas.Add(new Pizza() { Name = "Vesuvio", Price = 95, PizzaId = 3 });
+            Pizzas = new List<Pizza>();
+            Pizzas.Add(new Pizza() { Name = "Calzone", Price = 95, PizzaId = 1 });
+            Pizzas.Add(new Pizza() { Name = "Peperoni", Price = 75, PizzaId = 2 });
+            Pizzas.Add(new Pizza() { Name = "Vesuvio", Price = 95, PizzaId = 3 });
         }
         public static FakePizzaRepository Instance 
         {
@@ -27,8 +27,13 @@ namespace Pizza_StoreV2.Models
                 return _instance;
             }
         }
-        public void AddPizza(Pizza pizza) { pizzas.Add(pizza); }
-        public List<Pizza> GetAllPizzas() { return pizzas; }
+        public void AddPizza(Pizza pizza) { Pizzas.Add(pizza); }
+        public List<Pizza> GetAllPizzas() { return Pizzas; }
+        public Pizza SearchForPizzaById(int pizzaId)
+        {
+            Pizza findPizza = Pizzas[pizzaId];
+            return findPizza;
+        }
     }
 
 }

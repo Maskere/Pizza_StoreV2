@@ -24,10 +24,12 @@ namespace Pizza_StoreV2.Pages.Pizzas
         {
             if (!ModelState.IsValid) 
             {
-                
                 return Page();
             }
-            repo.AddPizza(Pizza);
+            if (repo.GetAllPizzas().Count<Pizza.PizzaId)
+            {
+                repo.AddPizza(Pizza);
+            }
             return RedirectToPage("GetAllPizzas");
         }
         public IActionResult OnGet() 

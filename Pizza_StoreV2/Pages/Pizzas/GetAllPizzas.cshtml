@@ -29,13 +29,16 @@
             {
                 <tr>
                     <td>
-                        @item.PizzaId
+                        @item.PizzaId 
                     </td>
                     <td>
-                        @item.Name
+                        @item.Name 
                     </td>
                     <td>
                         @item.Price
+                    </td>
+                    <td>
+                        <a asp-page="EditPizza" asp-route-id="">Edit</a>
                     </td>
                 </tr>
             }

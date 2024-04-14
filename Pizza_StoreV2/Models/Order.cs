@@ -1,10 +1,13 @@
-﻿namespace Pizza_StoreV2.Models
+﻿using Pizza_StoreV2.Catalogs;
+using System.ComponentModel.DataAnnotations;
+
+namespace Pizza_StoreV2.Models
 {
     public class Order
     {
         #region Instance Field
-        private Pizza _pizzaName;
-        private Customer _customerName;
+        public Pizza Pizza { get; set; }
+        public Customer Customer { get; set; }
         private int _numberOfPizzasInOrder;
         private int _orderID;
         private double _totalPrice;
@@ -14,29 +17,20 @@
         public Order()
         {
             _orderID = OrderID;
-            _customerName = Customer;
-            _pizzaName = Pizza;
+            Customer = new Customer();
+            Pizza = new Pizza();
             _numberOfPizzasInOrder = NumberOfPizzasInOrder;
             _totalPrice = TotalPrice;
         }
         #endregion
 
         #region Properties
-        public Pizza Pizza
-        {
-            get { return _pizzaName; }
-            set { _pizzaName = value; }
-        }
-        public Customer Customer
-        {
-            get { return _customerName; }
-            set { _customerName = value; }
-        }
         public int NumberOfPizzasInOrder
         {
             get { return _numberOfPizzasInOrder; }
             set { _numberOfPizzasInOrder = value; }
         }
+        [DataType(DataType.Currency)]
         public double TotalPrice
         {
             get { return _totalPrice; }

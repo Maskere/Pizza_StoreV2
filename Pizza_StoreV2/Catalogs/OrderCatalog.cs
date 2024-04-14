@@ -9,20 +9,23 @@ namespace Pizza_StoreV2.Catalogs
         List<Order> Orders;
         CustomerCatalog Customers;
         PizzaCatalog Pizzas;
-        Customer _customer;
-        Pizza _pizza;
+        private Customer Customer { get; set; }
+        private Pizza Pizza {  get; set; }
         public OrderCatalog()
         {
-            Orders = new List<Order>(new Order[10]);
-            _customer = new Customer() { CustomerName = "", CustomerId = 0 };
-            _pizza = new Pizza();
+            Orders = new List<Order>();
+            Customer = new Customer();
+            Pizza = new Pizza();
+            Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
+            Orders.Add(order1); 
+            Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
+            Orders.Add(order2);
+            foreach (Order order in Orders) { order.CalculateTotalPrice(); }
         }
         public int Count
         {
             get { return Orders.Count; }
         }
-        public Customer Customer { get { return _customer; } }
-        public Pizza Pizza { get { return _pizza; } }
         //public Order GetNewOrderFromExisting(Customer customer, Pizza pizza, int noOfPizzasInOrder, int orderId)
         //{
         //    Order order = new Order(customer, pizza, noOfPizzasInOrder, orderId);
@@ -37,21 +40,21 @@ namespace Pizza_StoreV2.Catalogs
         //    Order order = new Order(customer, pizza, noOfPizzasInOrder, orderId);
         //    return order;
         //}
-        public void AddAnOrderToTheList(Order order)
-        {
-            if (Orders.Contains(order)) { Console.WriteLine($"An order with id:{order.OrderID} already exist"); return; }
-            Orders.Insert(order.OrderID, order);
-        }
+        //public void AddAnOrderToTheList(Order order)
+        //{
+        //    if (Orders.Contains(order)) { Console.WriteLine($"An order with id:{order.OrderID} already exist"); return; }
+        //    Orders.Insert(order.OrderID, order);
+        //}
         //public void DeleteAnOrder(int OrderId)
         //{
         //    Orders.Insert(OrderId, new Order(new Customer() { CustomerName = "", CustomerId = 0 }, new Pizza(), 0, OrderId));
         //    Orders.RemoveAt(OrderId + 1);
         //}
-        public Order SeachForOrderById(int orderId)
-        {
-            Order findOrder = Orders[orderId];
-            return findOrder;
-        }
+        //public Order SeachForOrderById(int orderId)
+        //{
+        //    Order findOrder = Orders[orderId];
+        //    return findOrder;
+        //}
         //public void UpdateOrder(int orderId)
         //{
         //    Order updateOrder = new Order(Customers.GetNewCustomer("", 0), Pizzas.GetNewPizza("", 0, 0), 0, orderId);
@@ -74,30 +77,30 @@ namespace Pizza_StoreV2.Catalogs
         //    }
         //    return
         //}
-        public void Clear()
-        {
-            Orders.Clear();
-            Orders = new List<Order>(new Order[10]);
-        }
-        public void RemoveAt(int removeAt)
-        {
-            Orders.RemoveAt(removeAt);
-        }
-        public void PrintOrderList()
-        {
-            foreach (Order order in Orders)
-            {
-                if (order != null)
-                {
-                    order.CalculateTotalPrice();
-                    Console.WriteLine($"| {order} | Total price: {order.TotalPrice} |");
-                }
-                else
-                {
-                    Console.WriteLine("   ...");
-                }
-            }
-        }
+        //public void Clear()
+        //{
+        //    Orders.Clear();
+        //    Orders = new List<Order>(new Order[10]);
+        //}
+        //public void RemoveAt(int removeAt)
+        //{
+        //    Orders.RemoveAt(removeAt);
+        //}
+        //public void PrintOrderList()
+        //{
+        //    foreach (Order order in Orders)
+        //    {
+        //        if (order != null)
+        //        {
+        //            order.CalculateTotalPrice();
+        //            Console.WriteLine($"| {order} | Total price: {order.TotalPrice} |");
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("   ...");
+        //        }
+        //    }
+        //}
         public List<Order> AllOrders()
         {
             return Orders;

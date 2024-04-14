@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pizza_StoreV2.Models;
 using Pizza_StoreV2.Catalogs;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pizza_StoreV2.Pages.Customers
 {
@@ -13,7 +15,7 @@ namespace Pizza_StoreV2.Pages.Customers
     {
         private FakeCustomerRepository repo;
         [BindProperty]
-        public Customer customer { get; set; }
+        public Customer Customer { get; set; }
         public CreateCustomerModel()
         {
             repo = FakeCustomerRepository.Instance;
@@ -25,8 +27,10 @@ namespace Pizza_StoreV2.Pages.Customers
 
                 return Page();
             }
-            else { }
-            repo.AddCustomer(customer);
+            if(repo.GetAllCustomers().Count()<Customer.CustomerId)
+            {
+                repo.AddCustomer(Customer);
+            }
             return RedirectToPage("GetAllCustomers");
         }
         public IActionResult OnGet()

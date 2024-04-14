@@ -9,22 +9,42 @@ namespace Pizza_StoreV2.Pages.Orders
 {
     public class CreateOrderModel : PageModel
     {
-        private Order order;
-        private Customer customer;
-        private Pizza pizza;
+        public Order Order { get; set; }
+        public Customer Customer { get; set; }
+        public Pizza Pizza { get; set; }
+        public List<Customer> Customers { get; set; }
+        public List<Pizza> Pizzas { get; set; }
+        public List<Order> Orders { get; set; }
+        public FakeOrderRepository repo;
+        public FakePizzaRepository pizzaRepo;
+        public FakeCustomerRepository customerRepo;
         public CreateOrderModel() 
         {
-            order = new Order();
+            Order = new Order();
+            Customer = new Customer();
+            Pizza = new Pizza();
+            Orders = new List<Order>();
+            Pizzas = new List<Pizza>();
+            Customers = new List<Customer>();
+            repo = FakeOrderRepository.Instance;
+            pizzaRepo = FakePizzaRepository.Instance;
+            customerRepo = FakeCustomerRepository.Instance;
         }
-        [BindProperty]
-        public Order Order { get { return order; } }
         public IActionResult OnPost()
         {
-
-            return RedirectToPage("GetAllPizzas");
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            if (repo.Orders.Count < Order.OrderID)
+            {
+                repo.AddOrder(Order);
+            }
+            return RedirectToPage("GetAllOrders");
         }
         public IActionResult OnGet()
         {
+
             return Page();
         }
     }

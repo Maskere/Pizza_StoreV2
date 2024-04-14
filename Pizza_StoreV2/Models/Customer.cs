@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pizza_StoreV2.Catalogs;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 namespace Pizza_StoreV2.Models
 {
     public class Customer
@@ -24,21 +25,27 @@ namespace Pizza_StoreV2.Models
         #endregion
 
         #region Properties
+        [Display(Name ="Customer name")]
+        [Required(ErrorMessage ="Please enter a name")]
         public string CustomerName
         {
             get { return _customerName; }
             set { _customerName = value; }
         }
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
+        [DataType(DataType.PhoneNumber)]
+        [Range(8,8,ErrorMessage ="Phone number must have 8 digits")]
         public string PhoneNumber
         {
             get { return _phoneNumber; }
             set { _phoneNumber = value; }
         }
+        [DataType(DataType.EmailAddress)]
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+        
         public int CustomerId
         {
             get { return _customerId; }
@@ -49,7 +56,7 @@ namespace Pizza_StoreV2.Models
         #region Methods
         public override string ToString()
         {
-            return $"{CustomerId} {CustomerName}";
+            return $"{CustomerId}-{CustomerName}";
         }
         #endregion
     }

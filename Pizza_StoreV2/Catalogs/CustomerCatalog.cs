@@ -11,6 +11,9 @@ namespace Pizza_StoreV2.Catalogs
         public CustomerCatalog()
         {
             Customers = new List<Customer>();
+            Customers.Add(new Customer() { CustomerName = "Miki", CustomerId = 1, PhoneNumber = "4053 7194" });
+            Customers.Add(new Customer() { CustomerName = "Julie", CustomerId = 2, PhoneNumber = "4294 0853" });
+            Customers.Add(new Customer() { CustomerName = "Jais", CustomerId = 3 });
         }
         public static CustomerCatalog Instance 
         {

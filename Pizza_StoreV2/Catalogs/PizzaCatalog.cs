@@ -13,9 +13,9 @@ namespace Pizza_StoreV2.Catalogs
         public PizzaCatalog()
         {
             Pizzas = new List<Pizza>();
-            //Pizzas.Add(new Pizza() { Name = "Calzone", Price = 95, PizzaId = 1 });
-            //Pizzas.Add(new Pizza() { Name = "Peperoni", Price = 75, PizzaId = 2 });
-            //Pizzas.Add(new Pizza() { Name = "Vesuvio", Price = 95, PizzaId = 3 });
+            Pizzas.Add(new Pizza() { Name = "Calzone", Price = 95, PizzaId = 1 });
+            Pizzas.Add(new Pizza() { Name = "Peperoni", Price = 75, PizzaId = 2 });
+            Pizzas.Add(new Pizza() { Name = "Vesuvio", Price = 95, PizzaId = 3 });
         }
         public int Count
         {
