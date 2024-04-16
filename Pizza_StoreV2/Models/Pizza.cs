@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Pizza_StoreV2.Pages;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,14 @@ namespace Pizza_StoreV2.Models
         #endregion
 
         #region Properties
+        [BindProperty]
+        [Display(Name="Pizza price")]
+        [Required(ErrorMessage ="The '{0}' is required")]
         [Range(70,120,ErrorMessage ="Price must be between 70 and 120 kr.")]
         [DataType(DataType.Currency)]
         public int Price
         {
-            get { return _price; }
-            set { _price = value; }
+            get;set;
         }
         [Display(Name = "Pizza name")]
         [Required(ErrorMessage = "Please enter a pizza name"), MaxLength(15)]
@@ -41,10 +44,12 @@ namespace Pizza_StoreV2.Models
             get { return _name; }
             set { _name = value; }
         }
+        [Display(Name="Pizza ID")]
+        [Required(ErrorMessage ="The '{0}' is required")]
+        [Range(1,10)]
         public int PizzaId
         {
-            get { return _pizzaId; }
-            set { _pizzaId = value; }
+            get;set;
         }
         #endregion
 

@@ -53,16 +53,32 @@ namespace Pizza_StoreV2.Catalogs
             Customer findCustomer = Customers[customerId];
             return findCustomer;
         }
-        public void UpdateCustomer(Customer updatedCustomer)
+        //public void UpdateCustomer(Customer updatedCustomer)
+        //{
+        //    if (Customers.Contains(updatedCustomer))
+        //    {
+        //        updatedCustomer = null;
+        //    }
+        //    else
+        //    {
+        //        Customers.RemoveAt(updatedCustomer.CustomerId);
+        //        Customers.Insert(updatedCustomer.CustomerId, updatedCustomer);
+        //    }
+        //}
+        public void UpdateCustomer(Customer customer)
         {
-            if (Customers.Contains(updatedCustomer))
+            if (customer != null)
             {
-                updatedCustomer = null;
-            }
-            else
-            {
-                Customers.RemoveAt(updatedCustomer.CustomerId);
-                Customers.Insert(updatedCustomer.CustomerId, updatedCustomer);
+                foreach (var e in AllCustomers())
+                {
+                    if (e.CustomerId == customer.CustomerId)
+                    {
+                        e.CustomerId = customer.CustomerId;
+                        e.CustomerName = customer.CustomerName;
+                        e.PhoneNumber = customer.PhoneNumber;
+                        e.Email = customer.Email;
+                    }
+                }
             }
         }
         public Customer SearchCustomerByName(string customerName)

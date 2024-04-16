@@ -25,5 +25,26 @@ namespace Pizza_StoreV2.Models
         }
         public void AddCustomer(Customer customer) { Customers.Add(customer); }
         public List<Customer> GetAllCustomers() { return Customers; }
+        public Customer SearchForCustomerById(int customerId)
+        {
+            Customer findCustomer = Customers[customerId - 1];
+            return findCustomer;
+        }
+        public void UpdateCustomer(Customer customer)
+        {
+            if (customer != null)
+            {
+                foreach (var e in GetAllCustomers())
+                {
+                    if (e.CustomerId == customer.CustomerId)
+                    {
+                        e.CustomerId = customer.CustomerId;
+                        e.CustomerName = customer.CustomerName;
+                        e.PhoneNumber = customer.PhoneNumber;
+                        e.Email = customer.Email;
+                    }
+                }
+            }
+        }
     }
 }

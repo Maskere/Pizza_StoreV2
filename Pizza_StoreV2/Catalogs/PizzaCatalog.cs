@@ -39,21 +39,36 @@ namespace Pizza_StoreV2.Catalogs
                 return null;
             return pizza;
         }
-        public void UpdatePizza(Pizza updatePizza)
+        //public void UpdatePizza(Pizza updatePizza)
+        //{
+        //    if (Pizzas.Contains(updatePizza))
+        //    {
+        //        updatePizza = null;
+        //    }
+        //    else
+        //    {
+        //        Pizzas.RemoveAt((int)updatePizza.PizzaId);
+        //        Pizzas.Insert((int)updatePizza.PizzaId, updatePizza);
+        //    }
+        //}
+        public void UpdatePizza(Pizza pizza)
         {
-            if (Pizzas.Contains(updatePizza))
+            if (pizza != null)
             {
-                updatePizza = null;
-            }
-            else
-            {
-                Pizzas.RemoveAt(updatePizza.PizzaId);
-                Pizzas.Insert(updatePizza.PizzaId, updatePizza);
+                foreach (var e in AllPizzas())
+                {
+                    if (e.PizzaId == pizza.PizzaId)
+                    {
+                        e.PizzaId = pizza.PizzaId;
+                        e.Name = pizza.Name;
+                        e.Price = pizza.Price;
+                    }
+                }
             }
         }
         public void CreateAPizza(Pizza pizza)
         {
-            Pizzas.Insert(pizza.PizzaId, pizza);
+            Pizzas.Insert((int)pizza.PizzaId, pizza);
         }
         public void DeleteAPizza(int pizzaId)
         {

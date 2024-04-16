@@ -30,6 +30,7 @@ namespace Pizza_StoreV2.Pages.Pizzas
             {
                 repo.AddPizza(Pizza);
             }
+            repo.UpdatePizza(Pizza);
             return RedirectToPage("GetAllPizzas");
         }
         public IActionResult OnGet() 

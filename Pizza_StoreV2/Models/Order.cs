@@ -1,4 +1,5 @@
-﻿using Pizza_StoreV2.Catalogs;
+﻿using Microsoft.AspNetCore.Mvc;
+using Pizza_StoreV2.Catalogs;
 using System.ComponentModel.DataAnnotations;
 
 namespace Pizza_StoreV2.Models
@@ -6,6 +7,7 @@ namespace Pizza_StoreV2.Models
     public class Order
     {
         #region Instance Field
+        [BindProperty]
         public Pizza Pizza { get; set; }
         public Customer Customer { get; set; }
         private int _numberOfPizzasInOrder;
@@ -45,7 +47,7 @@ namespace Pizza_StoreV2.Models
         #region Methods
         public void CalculateTotalPrice()
         {
-            _totalPrice = Pizza.Price * _numberOfPizzasInOrder + 40;
+            _totalPrice = (double)Pizza.Price * _numberOfPizzasInOrder + 40;
         }
         public override string ToString()
         {

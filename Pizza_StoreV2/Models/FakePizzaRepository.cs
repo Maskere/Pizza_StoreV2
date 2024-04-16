@@ -31,8 +31,23 @@ namespace Pizza_StoreV2.Models
         public List<Pizza> GetAllPizzas() { return Pizzas; }
         public Pizza SearchForPizzaById(int pizzaId)
         {
-            Pizza findPizza = Pizzas[pizzaId];
+            Pizza findPizza = Pizzas[pizzaId-1];
             return findPizza;
+        }
+        public void UpdatePizza(Pizza pizza) 
+        {
+            if (pizza !=null) 
+            {
+                foreach (var e in GetAllPizzas()) 
+                {
+                    if (e.PizzaId == pizza.PizzaId) 
+                    {
+                        e.PizzaId = pizza.PizzaId;
+                        e.Name = pizza.Name;
+                        e.Price = pizza.Price;
+                    }
+                }
+            }
         }
     }
 

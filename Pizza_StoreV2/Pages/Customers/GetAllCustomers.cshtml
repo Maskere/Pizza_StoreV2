@@ -41,6 +41,9 @@
                     <td>
                         @item.Email
                     </td>
+                    <td>
+                        <a asp-page="EditCustomer" asp-route-id="@item.CustomerId">Edit</a>
+                    </td>
                 </tr>
             }
         }

@@ -47,6 +47,9 @@
                     <td>
                         @item.TotalPrice
                     </td>
+                    <td>
+                        <a asp-page="EditOrder" asp-route-id="@item.OrderID">Edit</a>
+                    </td>
                 </tr>
             }
 

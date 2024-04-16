@@ -33,17 +33,49 @@ namespace Pizza_StoreV2.Models
             }
         }
         public void AddOrder(Order order) { Orders.Add(order); }
-        public List<Order> GetAllOrders() { return Orders; }
-        public Pizza SearchForPizzaById(int pizzaId)
+        public void AddCustomerToOrder(int id,Customer customer) 
         {
-            Pizza findPizza = Pizzas[pizzaId];
-            return findPizza;
+            Orders[id].Customer = customer;
+        }
+        public void AddNewCustomerToOrder(Customer customer)
+        {
+            Orders.Add(new Order() { Customer=customer});
+        }
+        public void AddPizzaToOrder(int id, Pizza pizza) 
+        {
+            Orders[id].Pizza = pizza;
+        }
+        public void AddNewPizzaToOrder(Pizza pizza) 
+        {
+            Orders.Add(new Order() { Pizza=pizza});
+        }
+        public List<Order> GetAllOrders() { return Orders; }
+        public Order SearchForOrderById(int orderId)
+        {
+            Order findOrder = Orders[orderId-1];
+            return findOrder;
+        }
+        public void UpdateOrder(Order order)
+        {
+            if (order != null)
+            {
+                foreach (var e in GetAllOrders())
+                {
+                    if (e.OrderID == order.OrderID)
+                    {
+                        e.OrderID = order.OrderID;
+                        e.Customer = order.Customer;
+                        e.Pizza = order.Pizza;
+                        e.NumberOfPizzasInOrder = order.NumberOfPizzasInOrder;
+                    }
+                }
+            }
         }
         public void CalculateTotalPrice()
         {
             foreach (Order order in Orders) 
             {
-                _totalPrice = Pizza.Price * order.NumberOfPizzasInOrder + 40;
+                _totalPrice = (int)Pizza.Price * order.NumberOfPizzasInOrder + 40;
             }
         }
     }

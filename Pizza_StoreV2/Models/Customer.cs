@@ -25,6 +25,7 @@ namespace Pizza_StoreV2.Models
         #endregion
 
         #region Properties
+        [BindProperty]
         [Display(Name ="Customer name")]
         [Required(ErrorMessage ="Please enter a name")]
         public string CustomerName
