@@ -8,11 +8,9 @@ namespace Pizza_StoreV2.Pages.Orders
     public class GetAllOrdersModel : PageModel
     {
         private FakeOrderRepository repo;
-        private OrderCatalog catalog;
-        public GetAllOrdersModel()
+        public GetAllOrdersModel() 
         {
-            catalog = new OrderCatalog();
-            repo = FakeOrderRepository.Instance;
+            repo =FakeOrderRepository.Instance;
         }
         public List<Order> Orders { get; private set; }
         public IActionResult OnGet()

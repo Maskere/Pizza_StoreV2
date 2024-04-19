@@ -1,0 +1,32 @@
+﻿@page "{id:int}"
+@model Pizza_StoreV2.Pages.Pizzas.DeletePizzaModel
+@{
+    ViewData["Title"] = "DeletePizza";
+}
+<h1>Delete pizza</h1>
+<div class="row">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="@Model.Pizza.PizzaId" />
+        <div class="form-group">
+            <label asp-for="@Model.Pizza.PizzaId" class="control-label" hidden>ID</label>
+            <input asp-for="@Model.Pizza.PizzaId" class="form-control" hidden />
+            <span asp-validation-for="@Model.Pizza.PizzaId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Pizza.Name" class="control-label">Name</label>
+            <input asp-for="@Model.Pizza.Name" class="form-control" />
+            <span asp-validation-for="@Model.Pizza.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Pizza.Price" class="control-label">Price</label>
+            <input asp-for="@Model.Pizza.Price" class="form-control" />
+            <span asp-validation-for="@Model.Pizza.Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn brn-primary" />
+        </div>
+    </form>
+</div>
+<div><a asp-page="GetAllPizzas">Back to all pizzas</a></div>

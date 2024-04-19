@@ -11,8 +11,11 @@ namespace Pizza_StoreV2.Models
         public List<Customer> Customers { get; }
         private static FakeOrderRepository _instance;
         private int _totalPrice;
-        private Pizza Pizza { get; set; }
         private int NumberOfPizzasInOrder { get; set; }
+        [BindProperty]
+        public Pizza Pizza { get; set; }
+        public Customer Customer { get; set; }
+
         public FakeOrderRepository()
         {
             Orders = new List<Order>();
@@ -37,6 +40,10 @@ namespace Pizza_StoreV2.Models
         public void AddCustomerToOrder(int id, Customer customer)
         {
             Orders[id].Customer = customer;
+        }
+        public void DeleteOrderById(int id) 
+        {
+            Orders.RemoveAt(id-1);
         }
         public void AddNewCustomerToOrder(Customer customer)
         {

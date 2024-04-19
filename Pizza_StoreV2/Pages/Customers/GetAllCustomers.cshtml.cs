@@ -8,18 +8,18 @@ namespace Pizza_StoreV2.Pages.Customers
 {
     public class GetAllCustomersModel : PageModel
     {
-        private CustomerCatalog customerCatalog;
         private FakeCustomerRepository repo;
-        public GetAllCustomersModel()
+        [BindProperty(SupportsGet = true)]
+        public string FilterCriteria { get; set; }
+        public GetAllCustomersModel() 
         {
-            customerCatalog = new CustomerCatalog();
             repo = FakeCustomerRepository.Instance;
         }
-        [BindProperty]
         public List<Customer> Customers { get; set; }
         public IActionResult OnGet()
         {
             Customers = repo.GetAllCustomers();
+            if (!string.IsNullOrEmpty(FilterCriteria)) { Customers = repo.FilterCustomers(FilterCriteria); }
             return Page();
         }
         public IActionResult OnPost()

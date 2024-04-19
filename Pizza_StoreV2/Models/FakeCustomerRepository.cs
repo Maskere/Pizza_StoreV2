@@ -31,6 +31,27 @@ namespace Pizza_StoreV2.Models
             Customer findCustomer = Customers[customerId - 1];
             return findCustomer;
         }
+        public void RemoveCustomer(Customer customer, int id) 
+        {
+            if (customer != null)
+                Customers.Remove(customer);
+        }
+        public void DeleteACustomerById(int CustomerId)
+        {
+            Customers.RemoveAt(CustomerId-1);
+        }
+        public List<Customer> FilterCustomers(string filter)
+        {
+            List<Customer> filteredList = new List<Customer>();
+            foreach (Customer customer in Customers)
+            {
+                if (customer.CustomerName.Contains(filter, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    filteredList.Add(customer);
+                }
+            }
+            return filteredList;
+        }
         public void UpdateCustomer(Customer customer)
         {
             if (customer != null)

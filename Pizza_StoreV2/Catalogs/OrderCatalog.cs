@@ -1,6 +1,7 @@
 ﻿using Pizza_StoreV2.Models;
 using System.Collections.Generic;
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Pizza_StoreV2.Catalogs
 {
@@ -10,6 +11,7 @@ namespace Pizza_StoreV2.Catalogs
         private static OrderCatalog _instance;
         CustomerCatalog Customers;
         PizzaCatalog Pizzas;
+        [BindProperty]
         public Customer Customer { get; set; }
         public Pizza Pizza {  get; set; }
         public OrderCatalog()
@@ -37,12 +39,6 @@ namespace Pizza_StoreV2.Catalogs
         public int Count
         {
             get { return Orders.Count; }
-        }
-        public void AddOrder(Order order, Customer customer, Pizza pizza)
-        {
-            order.Customer = customer;
-            order.Pizza = pizza;
-            Orders.Add(order);
         }
         //public Order GetNewOrderFromExisting(Customer customer, Pizza pizza, int noOfPizzasInOrder, int orderId)
         //{
