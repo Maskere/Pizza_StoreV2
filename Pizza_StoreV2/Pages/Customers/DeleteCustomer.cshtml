@@ -1,9 +1,9 @@
 ﻿@page "{id:int}"
-@model Pizza_StoreV2.Pages.Customers.EditCustomerModel
+@model Pizza_StoreV2.Pages.Customers.DeleteCustomerModel
 @{
-    ViewData["Title"] = "EditCustomer";
+    ViewData["Title"] = "DeleteCustomer";
 }
-<h1>Edit customer</h1>
+<h1>Delete customer</h1>
 <form method="post">
     <div class="form-group">
         <label asp-for="@Model.Customer.CustomerName" class="control-label">Name</label>
@@ -11,8 +11,8 @@
         <span asp-validation-for="@Model.Customer.CustomerName" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.Customer.CustomerId" class="control-label" >ID</label>
-        <input asp-for="@Model.Customer.CustomerId" class="form-control"/>
+        <label asp-for="@Model.Customer.CustomerId" class="control-label" hidden>ID</label>
+        <input asp-for="@Model.Customer.CustomerId" class="form-control" hidden />
         <span asp-validation-for="@Model.Customer.CustomerId" class="text-danger"></span>
     </div>
     <h5>
@@ -29,7 +29,7 @@
         <span asp-validation-for="@Model.Customer.Email" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="submit" value="Update" class="btn brn-primary" />
+        <input type="submit" value="Delete" class="btn brn-primary" />
     </div>
 
 </form>

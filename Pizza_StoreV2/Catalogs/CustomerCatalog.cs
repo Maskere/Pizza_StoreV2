@@ -48,6 +48,11 @@ namespace Pizza_StoreV2.Catalogs
             Customers.Insert(CustomerId, new Customer() { CustomerName = "", CustomerId = CustomerId });
             Customers.RemoveAt(CustomerId + 1);
         }
+        public void RemoveCustomer(Customer customer)
+        {
+            if(customer != null)
+            Customers.Remove(customer);
+        }
         public Customer SeachForCustomerById(int customerId)
         {
             Customer findCustomer = Customers[customerId];

@@ -1,6 +1,7 @@
 ﻿@page
 @model Pizza_StoreV2.Pages.Orders.CreateOrderModel
 @{
+    ViewData["Title"] = "CreateOrder";
 }
 <h1>Create order</h1>
 <form method="post">
@@ -15,14 +16,17 @@
         <span asp-validation-for="@Model.Order.NumberOfPizzasInOrder" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.Order.Pizza" value="Pizza" class="control-label">Pizza</label>
-        <input asp-for="@Model.Order.Pizza" class="form-control" />
+        <label asp-for="@Model.Order.Pizza" class="control-label">Pizza</label><p></p>
+        <select class="form-group" asp-for="@Model.Order.Pizza" asp-items="@Model.PizzaList">
+            <option value="">Select pizza</option>
+        </select>
         <span asp-validation-for="@Model.Order.Pizza" class="text-danger"></span>
-        <a asp-page="CreatePizza" asp-route-id="">New pizza</a>
-    </div> 
+    </div>
     <div class="form-group">
-        <label asp-for="@Model.Order.Customer" class="control-label">Customer</label>
-        <input asp-for="@Model.Order.Customer" class="form-control" />
+        <label asp-for="@Model.Order.Customer" class="control-label">Customer</label><p></p>
+        <select class="form-group" asp-for="@Model.Order.Customer" asp-items="@Model.CustomerList">
+            <option value="">Select customer</option>
+        </select>
         <span asp-validation-for="@Model.Order.Customer" class="text-danger"></span>
     </div>
 

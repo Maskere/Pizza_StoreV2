@@ -3,6 +3,12 @@
 @{
 }
 <h1>Customer catalog</h1>
+<form>
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <p>
     <a asp-page="CreateCustomer">Create customer</a>
 </p>
@@ -42,7 +48,8 @@
                         @item.Email
                     </td>
                     <td>
-                        <a asp-page="EditCustomer" asp-route-id="@item.CustomerId">Edit</a>
+                        <a asp-page="EditCustomer" asp-route-id="@item.CustomerId">Edit</a> <p></p>
+                        <a asp-page="DeleteCustomer" asp-route-id="@item.CustomerId">Delete</a>
                     </td>
                 </tr>
             }

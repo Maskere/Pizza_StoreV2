@@ -12,16 +12,17 @@ namespace Pizza_StoreV2.Pages
     public class GetAllPizzasModel : PageModel
     {
         private FakePizzaRepository repo;
-        private PizzaCatalog PizzaCatalog;
+        [BindProperty(SupportsGet =true)]
+        public string FilterCriteria { get; set; }
         public GetAllPizzasModel()
         {
-            PizzaCatalog = new PizzaCatalog();
             repo = FakePizzaRepository.Instance;
         }
         public List<Pizza> Pizzas { get; private set; }
         public IActionResult OnGet()
         {
             Pizzas = repo.GetAllPizzas();
+            if (!string.IsNullOrEmpty(FilterCriteria)) { Pizzas = repo.FilterPizzas(FilterCriteria); }
             return Page();
         }
         public IActionResult OnPost() 

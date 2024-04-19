@@ -5,6 +5,12 @@
 }
 
 <h1>Pizza catalog</h1>
+<form>
+    <p>
+        Search: <input type="text" asp-for="FilterCriteria" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <p>
     <a asp-page="CreatePizza">Create pizza</a>
 </p>
@@ -38,7 +44,7 @@
                         @item.Price
                     </td>
                     <td>
-                        <a asp-page="EditPizza" asp-route-id="@item.PizzaId">Edit</a>
+                        <a asp-page="EditPizza" asp-route-id="@item.PizzaId">Edit</a><p></p> <a asp-page="DeletePizza" asp-route-id="@item.PizzaId">Delete</a>
                     </td>
                 </tr>
             }
