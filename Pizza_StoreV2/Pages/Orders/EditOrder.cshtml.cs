@@ -8,17 +8,17 @@ namespace Pizza_StoreV2.Pages.Orders
     public class EditOrderModel : PageModel
     {
         private FakeOrderRepository repo;
-        private FakeCustomerRepository customerRepo;
-        private FakePizzaRepository pizzaRepo;
+        private FakeCustomerRepository CustomerRepo;
+        private FakePizzaRepository PizzaRepo;
         [BindProperty]
         public Order Order { get; set; }
         public Customer Customer { get; set; }
         public Pizza Pizza { get; set; }
-        public EditOrderModel() 
+        public EditOrderModel(FakePizzaRepository pizzaRepo, FakeCustomerRepository customerRepo, FakeOrderRepository orderRepo) 
         {
-            repo = FakeOrderRepository.Instance;
-            customerRepo = FakeCustomerRepository.Instance;
-            pizzaRepo = FakePizzaRepository.Instance;
+            repo = orderRepo;
+            CustomerRepo = customerRepo;
+            PizzaRepo = pizzaRepo;
         }
         public IActionResult OnGet(int id)
         {

@@ -10,7 +10,7 @@ namespace Pizza_StoreV2.Pages.Customers
     {
         private CustomerCatalog customerCatalog;
         private FakeCustomerRepository repo;
-        public GetAllCustomersModel() 
+        public GetAllCustomersModel()
         {
             customerCatalog = new CustomerCatalog();
             repo = FakeCustomerRepository.Instance;
@@ -22,7 +22,7 @@ namespace Pizza_StoreV2.Pages.Customers
             Customers = repo.GetAllCustomers();
             return Page();
         }
-        public IActionResult OnPost() 
+        public IActionResult OnPost()
         {
             return Page();
         }

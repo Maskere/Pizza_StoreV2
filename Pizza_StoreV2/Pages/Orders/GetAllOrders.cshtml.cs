@@ -9,10 +9,10 @@ namespace Pizza_StoreV2.Pages.Orders
     {
         private FakeOrderRepository repo;
         private OrderCatalog catalog;
-        public GetAllOrdersModel() 
+        public GetAllOrdersModel()
         {
             catalog = new OrderCatalog();
-            repo =FakeOrderRepository.Instance;
+            repo = FakeOrderRepository.Instance;
         }
         public List<Order> Orders { get; private set; }
         public IActionResult OnGet()
@@ -20,7 +20,7 @@ namespace Pizza_StoreV2.Pages.Orders
             Orders = repo.GetAllOrders();
             return Page();
         }
-        public IActionResult OnPost() 
+        public IActionResult OnPost()
         {
             return Page();
         }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Pizza_StoreV2.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,7 +20,7 @@ namespace Pizza_StoreV2.Pages.Orders
         //public List<Customer> Customers { get; set; }
         //public List<Pizza> Pizzas { get; set; }
         //public List<Order> Orders { get; set; }
-        public CreateOrderModel() 
+        public CreateOrderModel()
         {
             Order = new Order();
             Customer = new Customer();
@@ -39,7 +40,6 @@ namespace Pizza_StoreV2.Pages.Orders
             //}
             if (repo.Orders.Count < Order.OrderID)
             {
-
                 repo.AddOrder(Order);
             }
             return RedirectToPage("GetAllOrders");

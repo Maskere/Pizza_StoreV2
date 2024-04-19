@@ -24,7 +24,7 @@ namespace Pizza_StoreV2.Pages
             Pizzas = repo.GetAllPizzas();
             return Page();
         }
-        public IActionResult OnPost() 
+        public IActionResult OnPost()
         {
             return Page();
         }

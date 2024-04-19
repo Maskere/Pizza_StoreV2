@@ -29,6 +29,17 @@ namespace Pizza_StoreV2.Catalogs
                 return _instance;
             }
         }
+        public Pizza GetPizza(string name)
+        {
+            foreach (Pizza pizza in Pizzas)
+            {
+                if (pizza != null)
+                {
+                    for (int i = 0; i < Pizzas.Count; i++) { Pizza findPizza = new Pizza(); ; if (string.Equals(pizza.Name, findPizza.Name)) return pizza; }
+                }
+            }
+            return null;
+        }
         public Pizza GetNewPizza(string pizzaName, int pizzaPrice, int pizzaId)
         {
             Pizza pizza = new Pizza();

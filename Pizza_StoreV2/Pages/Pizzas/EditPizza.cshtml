@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "EditPizza";
 }
-<h1>Editting pizza @Model.Pizza.PizzaId</h1>
+<h1>Editting: @Model.Pizza.PizzaId @Model.Pizza.Name</h1>
 <div class="row">
     <form method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="@Model.Pizza.PizzaId" />
         <div class="form-group">
-            <label asp-for="@Model.Pizza.PizzaId" class="control-label" hidden>ID</label>
-            <input asp-for="@Model.Pizza.PizzaId" class="form-control" hidden/>
+            <label asp-for="@Model.Pizza.PizzaId" class="control-label" >ID</label>
+            <input asp-for="@Model.Pizza.PizzaId" class="form-control"/>
             <span asp-validation-for="@Model.Pizza.PizzaId" class="text-danger"></span>
         </div>
         <div class="form-group">

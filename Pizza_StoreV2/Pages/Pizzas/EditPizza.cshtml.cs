@@ -10,7 +10,7 @@ namespace Pizza_StoreV2.Pages.Pizzas
         private FakePizzaRepository repo;
         [BindProperty]
         public Pizza Pizza { get; set; }
-        public EditPizzaModel() 
+        public EditPizzaModel()
         {
             repo = FakePizzaRepository.Instance;
         }
@@ -19,7 +19,7 @@ namespace Pizza_StoreV2.Pages.Pizzas
             Pizza = repo.SearchForPizzaById(id);
             return Page();
         }
-        public IActionResult OnPost() 
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {

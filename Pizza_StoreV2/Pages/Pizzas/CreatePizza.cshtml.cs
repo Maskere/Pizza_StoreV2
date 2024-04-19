@@ -22,18 +22,18 @@ namespace Pizza_StoreV2.Pages.Pizzas
         }
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return Page();
             }
-            if (repo.GetAllPizzas().Count<Pizza.PizzaId)
+            if (repo.GetAllPizzas().Count < Pizza.PizzaId)
             {
                 repo.AddPizza(Pizza);
             }
             repo.UpdatePizza(Pizza);
             return RedirectToPage("GetAllPizzas");
         }
-        public IActionResult OnGet() 
+        public IActionResult OnGet()
         {
             return Page();
         }

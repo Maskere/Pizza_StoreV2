@@ -9,18 +9,18 @@ namespace Pizza_StoreV2.Models
     {
         private List<Pizza> Pizzas { get; }
         private static FakePizzaRepository _instance;
-        public FakePizzaRepository() 
+        public FakePizzaRepository()
         {
             Pizzas = new List<Pizza>();
             Pizzas.Add(new Pizza() { Name = "Calzone", Price = 95, PizzaId = 1 });
             Pizzas.Add(new Pizza() { Name = "Peperoni", Price = 75, PizzaId = 2 });
             Pizzas.Add(new Pizza() { Name = "Vesuvio", Price = 95, PizzaId = 3 });
         }
-        public static FakePizzaRepository Instance 
+        public static FakePizzaRepository Instance
         {
-            get 
+            get
             {
-                if (_instance == null) 
+                if (_instance == null)
                 {
                     _instance = new FakePizzaRepository();
                 }
@@ -28,19 +28,30 @@ namespace Pizza_StoreV2.Models
             }
         }
         public void AddPizza(Pizza pizza) { Pizzas.Add(pizza); }
+        public Pizza GetPizza(string name) 
+        {
+            foreach (Pizza pizza in Pizzas)
+            {
+                if (pizza != null)
+                {
+                    for (int i = 0; i < Pizzas.Count; i++) { Pizza findPizza = new Pizza(); ; if (string.Equals(pizza.Name, findPizza.Name)) return pizza; }
+                }
+            }
+            return null;
+        }
         public List<Pizza> GetAllPizzas() { return Pizzas; }
         public Pizza SearchForPizzaById(int pizzaId)
         {
-            Pizza findPizza = Pizzas[pizzaId-1];
+            Pizza findPizza = Pizzas[pizzaId - 1];
             return findPizza;
         }
-        public void UpdatePizza(Pizza pizza) 
+        public void UpdatePizza(Pizza pizza)
         {
-            if (pizza !=null) 
+            if (pizza != null)
             {
-                foreach (var e in GetAllPizzas()) 
+                foreach (var e in GetAllPizzas())
                 {
-                    if (e.PizzaId == pizza.PizzaId) 
+                    if (e.PizzaId == pizza.PizzaId)
                     {
                         e.PizzaId = pizza.PizzaId;
                         e.Name = pizza.Name;
@@ -50,5 +61,4 @@ namespace Pizza_StoreV2.Models
             }
         }
     }
-
 }

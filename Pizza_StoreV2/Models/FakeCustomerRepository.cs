@@ -9,18 +9,19 @@ namespace Pizza_StoreV2.Models
     {
         private List<Customer> Customers { get; }
         private static FakeCustomerRepository _instance;
-        public FakeCustomerRepository() 
+        public FakeCustomerRepository()
         {
             Customers = new List<Customer>();
             Customers.Add(new Customer() { CustomerName = "Miki", CustomerId = 1, PhoneNumber = "4053 7194" });
             Customers.Add(new Customer() { CustomerName = "Julie", CustomerId = 2, PhoneNumber = "4294 0853" });
             Customers.Add(new Customer() { CustomerName = "Jais", CustomerId = 3 });
         }
-        public static FakeCustomerRepository Instance 
+        public static FakeCustomerRepository Instance
         {
-            get 
+            get
             {
-                if (_instance == null) { _instance = new FakeCustomerRepository(); } return _instance;
+                if (_instance == null) { _instance = new FakeCustomerRepository(); }
+                return _instance;
             }
         }
         public void AddCustomer(Customer customer) { Customers.Add(customer); }

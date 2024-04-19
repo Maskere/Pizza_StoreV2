@@ -7,10 +7,11 @@ namespace Pizza_StoreV2.Catalogs
     public class OrderCatalog
     {
         List<Order> Orders;
+        private static OrderCatalog _instance;
         CustomerCatalog Customers;
         PizzaCatalog Pizzas;
-        private Customer Customer { get; set; }
-        private Pizza Pizza {  get; set; }
+        public Customer Customer { get; set; }
+        public Pizza Pizza {  get; set; }
         public OrderCatalog()
         {
             Orders = new List<Order>();
@@ -22,9 +23,26 @@ namespace Pizza_StoreV2.Catalogs
             Orders.Add(order2);
             foreach (Order order in Orders) { order.CalculateTotalPrice(); }
         }
+        public static OrderCatalog Instance {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new OrderCatalog();
+
+                }
+                return _instance;
+            }
+        }
         public int Count
         {
             get { return Orders.Count; }
+        }
+        public void AddOrder(Order order, Customer customer, Pizza pizza)
+        {
+            order.Customer = customer;
+            order.Pizza = pizza;
+            Orders.Add(order);
         }
         //public Order GetNewOrderFromExisting(Customer customer, Pizza pizza, int noOfPizzasInOrder, int orderId)
         //{

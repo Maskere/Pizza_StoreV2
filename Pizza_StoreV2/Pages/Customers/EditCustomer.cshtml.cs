@@ -10,7 +10,7 @@ namespace Pizza_StoreV2.Pages.Customers
         private FakeCustomerRepository repo;
         [BindProperty]
         public Customer Customer { get; set; }
-        public EditCustomerModel() 
+        public EditCustomerModel()
         {
             repo = FakeCustomerRepository.Instance;
         }
@@ -19,9 +19,9 @@ namespace Pizza_StoreV2.Pages.Customers
             Customer = repo.SearchForCustomerById(id);
             return Page();
         }
-        public IActionResult OnPost() 
+        public IActionResult OnPost()
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }

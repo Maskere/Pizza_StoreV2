@@ -1,4 +1,5 @@
-﻿using Pizza_StoreV2.Catalogs;
+﻿using Microsoft.AspNetCore.Mvc;
+using Pizza_StoreV2.Catalogs;
 using System.Collections.Generic;
 
 namespace Pizza_StoreV2.Models
@@ -33,26 +34,26 @@ namespace Pizza_StoreV2.Models
             }
         }
         public void AddOrder(Order order) { Orders.Add(order); }
-        public void AddCustomerToOrder(int id,Customer customer) 
+        public void AddCustomerToOrder(int id, Customer customer)
         {
             Orders[id].Customer = customer;
         }
         public void AddNewCustomerToOrder(Customer customer)
         {
-            Orders.Add(new Order() { Customer=customer});
+            Orders.Add(new Order() { Customer = customer });
         }
-        public void AddPizzaToOrder(int id, Pizza pizza) 
+        public void AddPizzaToOrder(int id, Pizza pizza)
         {
             Orders[id].Pizza = pizza;
         }
-        public void AddNewPizzaToOrder(Pizza pizza) 
+        public void AddNewPizzaToOrder(Pizza pizza)
         {
-            Orders.Add(new Order() { Pizza=pizza});
+            Orders.Add(new Order() { Pizza = pizza });
         }
         public List<Order> GetAllOrders() { return Orders; }
         public Order SearchForOrderById(int orderId)
         {
-            Order findOrder = Orders[orderId-1];
+            Order findOrder = Orders[orderId - 1];
             return findOrder;
         }
         public void UpdateOrder(Order order)
@@ -73,7 +74,7 @@ namespace Pizza_StoreV2.Models
         }
         public void CalculateTotalPrice()
         {
-            foreach (Order order in Orders) 
+            foreach (Order order in Orders)
             {
                 _totalPrice = (int)Pizza.Price * order.NumberOfPizzasInOrder + 40;
             }
