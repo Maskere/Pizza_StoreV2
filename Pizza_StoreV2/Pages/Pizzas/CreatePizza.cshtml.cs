@@ -5,20 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pizza_StoreV2.Models;
-using Pizza_StoreV2.Catalogs;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using Pizza_StoreV2.Interface;
 
 namespace Pizza_StoreV2.Pages.Pizzas
 {
     public class CreatePizzaModel : PageModel
     {
-        private FakePizzaRepository repo;
+        //private FakePizzaRepository repo;
+        private IPizzaRepository repo;
         [BindProperty]
         public Pizza Pizza { get; set; }
-        public CreatePizzaModel()
+        public CreatePizzaModel(IPizzaRepository repository)
         {
-            repo = FakePizzaRepository.Instance;
+            //repo = FakePizzaRepository.Instance;
+            repo = repository;
         }
         public IActionResult OnPost()
         {

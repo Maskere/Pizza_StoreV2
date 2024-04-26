@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Pizza_StoreV2.Catalogs;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace Pizza_StoreV2.Models

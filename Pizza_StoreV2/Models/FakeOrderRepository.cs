@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pizza_StoreV2.Catalogs;
+using Pizza_StoreV2.Interface;
 using System.Collections.Generic;
 
 namespace Pizza_StoreV2.Models
 {
-    public class FakeOrderRepository
+    public class FakeOrderRepository : IOrderRepository
     {
         public List<Order> Orders { get; }
         public List<Pizza> Pizzas { get; }
@@ -19,10 +19,10 @@ namespace Pizza_StoreV2.Models
         public FakeOrderRepository()
         {
             Orders = new List<Order>();
-            Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
-            Orders.Add(order1);
-            Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
-            Orders.Add(order2);
+            //Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
+            //Orders.Add(order1);
+            //Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
+            //Orders.Add(order2);
             foreach (Order order in Orders) { order.CalculateTotalPrice(); }
         }
         public static FakeOrderRepository Instance
@@ -85,6 +85,31 @@ namespace Pizza_StoreV2.Models
             {
                 _totalPrice = (int)Pizza.Price * order.NumberOfPizzasInOrder + 40;
             }
+        }
+
+        public List<Order> GetOrders()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<Pizza> GetPizzas()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<Customer> GetCustomers()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Pizza GetPizza()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Customer GetCustomer()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

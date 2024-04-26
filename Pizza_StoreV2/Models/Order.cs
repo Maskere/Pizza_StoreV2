@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pizza_StoreV2.Catalogs;
 using System.ComponentModel.DataAnnotations;
 
 namespace Pizza_StoreV2.Models

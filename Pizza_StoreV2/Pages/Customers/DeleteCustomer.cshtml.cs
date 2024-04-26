@@ -1,17 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Pizza_StoreV2.Interface;
 using Pizza_StoreV2.Models;
 
 namespace Pizza_StoreV2.Pages.Customers
 {
     public class DeleteCustomerModel : PageModel
     {
-        private FakeCustomerRepository repo;
+        //private FakeCustomerRepository repo;
+        private ICustomerRepository repo;
         [BindProperty]
         public Customer Customer {  get; set; }
-        public DeleteCustomerModel() 
+        public DeleteCustomerModel(ICustomerRepository Repo) 
         {
-            repo = FakeCustomerRepository.Instance;
+            repo = Repo;
         }
         public IActionResult OnGet(int id)
         {

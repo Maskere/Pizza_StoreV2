@@ -4,32 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Pizza_StoreV2.Catalogs
+namespace Pizza_StoreV2.Services
 {
     public class PizzaCatalog
     {
         public List<Pizza> Pizzas;
-        private static PizzaCatalog _instance;
+        //private static PizzaCatalog _instance;
         public PizzaCatalog()
         {
             Pizzas = new List<Pizza>();
             Pizzas.Add(new Pizza() { Name = "Calzone", Price = 95, PizzaId = 1 });
             Pizzas.Add(new Pizza() { Name = "Peperoni", Price = 75, PizzaId = 2 });
             Pizzas.Add(new Pizza() { Name = "Vesuvio", Price = 95, PizzaId = 3 });
-            Pizzas.Add(new Pizza() { Name="Salad", Price=75});
+            Pizzas.Add(new Pizza() { Name = "Salad", Price = 75 });
         }
         public int Count
         {
             get { return Pizzas.Count; }
         }
-        public static PizzaCatalog Instance 
-        {
-            get
-            {
-                if (_instance == null) { _instance = new PizzaCatalog(); }
-                return _instance;
-            }
-        }
+        //public static PizzaCatalog Instance 
+        //{
+        //    get
+        //    {
+        //        if (_instance == null) { _instance = new PizzaCatalog(); }
+        //        return _instance;
+        //    }
+        //}
         public Pizza GetNewPizza(string pizzaName, int pizzaPrice, int pizzaId)
         {
             Pizza pizza = new Pizza();
@@ -69,7 +69,7 @@ namespace Pizza_StoreV2.Catalogs
         }
         public void CreateAPizza(Pizza pizza)
         {
-            Pizzas.Insert((int)pizza.PizzaId, pizza);
+            Pizzas.Insert(pizza.PizzaId, pizza);
         }
         public void DeleteAPizza(int pizzaId)
         {
@@ -104,11 +104,11 @@ namespace Pizza_StoreV2.Catalogs
                 }
             }
         }
-        public List<Pizza> AllPizzas() 
+        public List<Pizza> AllPizzas()
         {
             return Pizzas;
         }
-        public void AddPizza(Pizza pizza) 
+        public void AddPizza(Pizza pizza)
         {
             Pizzas.Add(pizza);
         }

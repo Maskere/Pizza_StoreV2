@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Pizza_StoreV2.Interface;
+using Pizza_StoreV2.Pages;
 
-namespace Pizza_StoreV2.Catalogs
+namespace Pizza_StoreV2.Services
 {
     public class OrderCatalog
     {
@@ -12,16 +14,16 @@ namespace Pizza_StoreV2.Catalogs
         PizzaCatalog Pizzas;
         [BindProperty]
         public Customer Customer { get; set; }
-        public Pizza Pizza {  get; set; }
+        public Pizza Pizza { get; set; }
         public OrderCatalog()
         {
             Orders = new List<Order>();
             Customer = new Customer();
             Pizza = new Pizza();
-            Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
-            Orders.Add(order1); 
-            Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
-            Orders.Add(order2);
+            //Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = , Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
+            //Orders.Add(order1); 
+            //Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
+            //Orders.Add(order2);
             foreach (Order order in Orders) { order.CalculateTotalPrice(); }
         }
         public int Count

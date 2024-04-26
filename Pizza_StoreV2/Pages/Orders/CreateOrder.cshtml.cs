@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Pizza_StoreV2.Interface;
 using Pizza_StoreV2.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,20 +11,24 @@ namespace Pizza_StoreV2.Pages.Orders
 {
     public class CreateOrderModel : PageModel
     {
-        private FakeOrderRepository repo;
-        private FakePizzaRepository pizzaRepo;
-        private FakeCustomerRepository customerRepo;
+        //private FakeOrderRepository repo;
+        //private FakePizzaRepository pizzaRepo;
+        //private FakeCustomerRepository customerRepo;
+        private IPizzaRepository pizzaRepo;
+        private IOrderRepository orderRepo;
+        private ICustomerRepository customerRepo;
         public SelectList PizzaList { get; set; }
         public SelectList CustomerList { get; set; }
         [BindProperty] 
         public Order Order { get; set; }
         public Customer Customer { get; set; }
         public Pizza Pizza { get; set; }
-        public CreateOrderModel() 
+        public CreateOrderModel(IOrderRepository OrderRepo, IPizzaRepository pizzaRepo, ICustomerRepository customerRepo) 
         {
-            repo = FakeOrderRepository.Instance;
-            pizzaRepo = FakePizzaRepository.Instance;
-            customerRepo = FakeCustomerRepository.Instance;
+            //repo = FakeOrderRepository.Instance;
+            //pizzaRepo = FakePizzaRepository.Instance;
+            //customerRepo = FakeCustomerRepository.Instance;
+            OrderRepo = orderRepo;
             PizzaList = new SelectList(pizzaRepo.GetAllPizzas());
             CustomerList = new SelectList(customerRepo.GetAllCustomers());
         }
@@ -33,9 +38,9 @@ namespace Pizza_StoreV2.Pages.Orders
             {
                 return Page();
             }
-            if (repo.Orders.Count < Order.OrderID)
+            if (orderRepo.GetOrders().Count < Order.OrderID)
             {
-                repo.AddOrder(Order);
+                orderRepo.AddOrder(Order);
             }
             return RedirectToPage("GetAllOrders");
         }

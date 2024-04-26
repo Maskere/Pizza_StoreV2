@@ -1,28 +1,31 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Pizza_StoreV2.Catalogs;
+using Pizza_StoreV2.Interface;
 using Pizza_StoreV2.Models;
 
 namespace Pizza_StoreV2.Pages.Orders
 {
     public class EditOrderModel : PageModel
     {
-        private FakeOrderRepository repo;
-        private FakeCustomerRepository customerRepo;
-        private FakePizzaRepository pizzaRepo;
+        //private FakeOrderRepository repo;
+        //private FakeCustomerRepository customerRepo;
+        //private FakePizzaRepository pizzaRepo;
+        private IOrderRepository orderRepo;
+        private ICustomerRepository customerRepo;
+        private IPizzaRepository pizzaRepo;
         [BindProperty]
         public Order Order { get; set; }
         public Customer Customer { get; set; }
         public Pizza Pizza { get; set; }
-        public EditOrderModel() 
+        public EditOrderModel(IOrderRepository OrderRepo, ICustomerRepository CustomerRepo, IPizzaRepository PizzaRepo) 
         {
-            repo = FakeOrderRepository.Instance;
-            customerRepo = FakeCustomerRepository.Instance;
-            pizzaRepo = FakePizzaRepository.Instance;
+            orderRepo = OrderRepo;
+            customerRepo = CustomerRepo;
+            pizzaRepo = PizzaRepo;
         }
         public IActionResult OnGet(int id)
         {
-            Order = repo.SearchForOrderById(id);
+            Order = orderRepo.SearchForOrderById(id);
             return Page();
         }
         public IActionResult OnPost() 
@@ -31,7 +34,7 @@ namespace Pizza_StoreV2.Pages.Orders
             {
                 return Page();
             }
-            repo.UpdateOrder(Order);
+            orderRepo.UpdateOrder(Order);
             return RedirectToPage("GetAllOrders");
         }
     }
