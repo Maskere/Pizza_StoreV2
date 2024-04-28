@@ -2,27 +2,25 @@
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Pizza_StoreV2.Interface;
+using Pizza_StoreV2.Pages;
 
-namespace Pizza_StoreV2.Catalogs
+namespace Pizza_StoreV2.Services
 {
     public class OrderCatalog
     {
         [BindProperty]
         public Customer Customer { get; set; }
-        public Pizza Pizza {  get; set; }
-        public List<Order> Orders;
-        private static OrderCatalog _instance;
-        public CustomerCatalog Customers;
-        public PizzaCatalog Pizzas;
+        public Pizza Pizza { get; set; }
         public OrderCatalog()
         {
             Orders = new List<Order>();
             Customer = new Customer();
             Pizza = new Pizza();
-            Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
-            Orders.Add(order1); 
-            Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
-            Orders.Add(order2);
+            //Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = , Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
+            //Orders.Add(order1); 
+            //Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
+            //Orders.Add(order2);
             foreach (Order order in Orders) { order.CalculateTotalPrice(); }
         }
         public static OrderCatalog Instance {

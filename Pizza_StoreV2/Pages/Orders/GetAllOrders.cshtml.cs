@@ -1,16 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Pizza_StoreV2.Catalogs;
+using Pizza_StoreV2.Interface;
 using Pizza_StoreV2.Models;
 using System.Collections.Generic;
 namespace Pizza_StoreV2.Pages.Orders
 {
     public class GetAllOrdersModel : PageModel
     {
-        private FakeOrderRepository repo;
-        public GetAllOrdersModel() 
+        //private FakeOrderRepository repo;
+        private IOrderRepository repo;
+        public GetAllOrdersModel(IOrderRepository Repo) 
         {
-            repo =FakeOrderRepository.Instance;
+            repo = Repo;
         }
         public List<Order> Orders { get; private set; }
         public IActionResult OnGet()

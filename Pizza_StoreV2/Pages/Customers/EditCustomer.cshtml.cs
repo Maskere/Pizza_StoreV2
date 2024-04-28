@@ -1,18 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Pizza_StoreV2.Catalogs;
+using Pizza_StoreV2.Interface;
 using Pizza_StoreV2.Models;
 
 namespace Pizza_StoreV2.Pages.Customers
 {
     public class EditCustomerModel : PageModel
     {
-        private FakeCustomerRepository repo;
+        //private FakeCustomerRepository repo;
+        private ICustomerRepository repo;
         [BindProperty]
         public Customer Customer { get; set; }
-        public EditCustomerModel()
+        public EditCustomerModel(ICustomerRepository Repo) 
         {
-            repo = FakeCustomerRepository.Instance;
+            repo = Repo;
         }
         public IActionResult OnGet(int id)
         {

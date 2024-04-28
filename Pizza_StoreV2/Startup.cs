@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pizza_StoreV2.Models;
+using Pizza_StoreV2.Interface;
+using Pizza_StoreV2.Services;
 
 namespace Pizza_StoreV2
 {
@@ -24,6 +27,10 @@ namespace Pizza_StoreV2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSingleton<IPizzaRepository,FakePizzaRepository>();
+            services.AddSingleton<IOrderRepository,FakeOrderRepository>();
+            services.AddSingleton<ICustomerRepository,FakeCustomerRepository>();
+            services.AddTransient<IPizzaRepository, PizzaJson>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

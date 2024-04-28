@@ -1,0 +1,17 @@
+[
+  {
+    "Price": 85,
+    "Name": "Calzone",
+    "PizzaId": 1
+  },
+  {
+    "Price": 95,
+    "Name": "Vesuvio",
+    "PizzaId": 2
+  },
+  {
+    "Price": 75,
+    "Name": "Salad",
+    "PizzaId": 3
+  }
+]

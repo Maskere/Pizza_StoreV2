@@ -1,13 +1,14 @@
 ﻿using Pizza_StoreV2.Models;
 using System.Collections.Generic;
 using System;
+using Pizza_StoreV2.Interface;
 
-namespace Pizza_StoreV2.Catalogs
+namespace Pizza_StoreV2.Services
 {
-    public class CustomerCatalog
+    public class CustomerCatalog : ICustomerRepository
     {
         List<Customer> Customers;
-        private static CustomerCatalog _instance;
+        //private static CustomerCatalog _instance;
         public CustomerCatalog()
         {
             Customers = new List<Customer>();
@@ -15,18 +16,18 @@ namespace Pizza_StoreV2.Catalogs
             Customers.Add(new Customer() { CustomerName = "Julie", CustomerId = 2, PhoneNumber = "4294 0853" });
             Customers.Add(new Customer() { CustomerName = "Jais", CustomerId = 3 });
         }
-        public static CustomerCatalog Instance 
-        {
-            get 
-            {
-                if (_instance == null) 
-                {
-                    _instance = new CustomerCatalog();
-                    
-                }
-                return _instance;
-            }
-        }
+        //public static CustomerCatalog Instance 
+        //{
+        //    get 
+        //    {
+        //        if (_instance == null) 
+        //        {
+        //            _instance = new CustomerCatalog();
+
+        //        }
+        //        return _instance;
+        //    }
+        //}
         public int Count
         {
             get { return Customers.Count; }
@@ -50,8 +51,8 @@ namespace Pizza_StoreV2.Catalogs
         }
         public void RemoveCustomer(Customer customer)
         {
-            if(customer != null)
-            Customers.Remove(customer);
+            if (customer != null)
+                Customers.Remove(customer);
         }
         public Customer SeachForCustomerById(int customerId)
         {
@@ -121,13 +122,28 @@ namespace Pizza_StoreV2.Catalogs
                 }
             }
         }
-        public List<Customer> AllCustomers() 
+        public List<Customer> AllCustomers()
         {
             return Customers;
         }
-        public void AddCustomer(Customer customer) 
+        public void AddCustomer(Customer customer)
         {
             Customers.Add(customer);
+        }
+
+        public List<Customer> GetCustomers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer GetCustomer()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Customer> GetAllCustomers()
+        {
+            throw new NotImplementedException();
         }
     }
 }

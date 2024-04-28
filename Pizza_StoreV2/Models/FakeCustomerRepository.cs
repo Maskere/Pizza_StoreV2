@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Pizza_StoreV2.Catalogs;
+using Pizza_StoreV2.Interface;
 using System.Collections.Generic;
 using System.Linq;
 namespace Pizza_StoreV2.Models
 {
-    public class FakeCustomerRepository
+    public class FakeCustomerRepository : ICustomerRepository
     {
         [BindProperty]
         private List<Customer> Customers { get; }
@@ -80,6 +80,16 @@ namespace Pizza_StoreV2.Models
                     }
                 }
             }
+        }
+
+        public List<Customer> GetCustomers()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Customer GetCustomer()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
