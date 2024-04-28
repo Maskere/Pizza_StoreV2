@@ -13,29 +13,30 @@ namespace Pizza_StoreV2.Pages.Orders
         private FakeOrderRepository repo;
         private FakePizzaRepository pizzaRepo;
         private FakeCustomerRepository customerRepo;
-        public SelectList PizzaList { get; set; }
         public SelectList CustomerList { get; set; }
-        [BindProperty] 
+        public SelectList PizzaList { get; set; }
+        [BindProperty]
         public Order Order { get; set; }
         public Customer Customer { get; set; }
         public Pizza Pizza { get; set; }
-        public CreateOrderModel() 
+        public CreateOrderModel()
         {
             repo = FakeOrderRepository.Instance;
             pizzaRepo = FakePizzaRepository.Instance;
             customerRepo = FakeCustomerRepository.Instance;
-            PizzaList = new SelectList(pizzaRepo.GetAllPizzas());
-            CustomerList = new SelectList(customerRepo.GetAllCustomers());
+            PizzaList = new SelectList(pizzaRepo.GetAllPizzas(),nameof(Pizza.Name));
+            CustomerList = new SelectList(customerRepo.GetAllCustomers(),nameof(Customer.CustomerName));
         }
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
             if (repo.Orders.Count < Order.OrderID)
             {
-                repo.AddOrder(Order);
+                repo.Orders.Add(Order);
+
             }
             return RedirectToPage("GetAllOrders");
         }

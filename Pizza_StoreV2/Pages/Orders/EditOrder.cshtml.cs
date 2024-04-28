@@ -14,11 +14,11 @@ namespace Pizza_StoreV2.Pages.Orders
         public Order Order { get; set; }
         public Customer Customer { get; set; }
         public Pizza Pizza { get; set; }
-        public EditOrderModel(FakePizzaRepository pizzaRepo, FakeCustomerRepository customerRepo, FakeOrderRepository orderRepo) 
+        public EditOrderModel() 
         {
-            repo = orderRepo;
-            CustomerRepo = customerRepo;
-            PizzaRepo = pizzaRepo;
+            repo = FakeOrderRepository.Instance;
+            CustomerRepo = FakeCustomerRepository.Instance;
+            PizzaRepo = FakePizzaRepository.Instance;
         }
         public IActionResult OnGet(int id)
         {

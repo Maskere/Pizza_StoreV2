@@ -16,15 +16,14 @@ namespace Pizza_StoreV2.Pages.Customers
         private FakeCustomerRepository Repo;
         [BindProperty]
         public Customer Customer { get; set; }
-        public CreateCustomerModel(FakeCustomerRepository repo)
+        public CreateCustomerModel()
         {
-            Repo = repo;
+            Repo = FakeCustomerRepository.Instance;
         }
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-
                 return Page();
             }
             if(Repo.GetAllCustomers().Count()<Customer.CustomerId)

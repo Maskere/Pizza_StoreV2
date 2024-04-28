@@ -7,13 +7,13 @@ namespace Pizza_StoreV2.Catalogs
 {
     public class OrderCatalog
     {
-        List<Order> Orders;
-        private static OrderCatalog _instance;
-        CustomerCatalog Customers;
-        PizzaCatalog Pizzas;
         [BindProperty]
         public Customer Customer { get; set; }
         public Pizza Pizza {  get; set; }
+        public List<Order> Orders;
+        private static OrderCatalog _instance;
+        public CustomerCatalog Customers;
+        public PizzaCatalog Pizzas;
         public OrderCatalog()
         {
             Orders = new List<Order>();

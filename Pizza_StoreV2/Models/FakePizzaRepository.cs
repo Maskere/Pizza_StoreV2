@@ -7,6 +7,7 @@ namespace Pizza_StoreV2.Models
 {
     public class FakePizzaRepository
     {
+        [BindProperty]
         private List<Pizza> Pizzas { get; }
         private static FakePizzaRepository _instance;
         public FakePizzaRepository()

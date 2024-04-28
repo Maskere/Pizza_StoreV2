@@ -7,6 +7,7 @@ namespace Pizza_StoreV2.Models
 {
     public class FakeCustomerRepository
     {
+        [BindProperty]
         private List<Customer> Customers { get; }
         private static FakeCustomerRepository _instance;
         public FakeCustomerRepository()
@@ -26,9 +27,21 @@ namespace Pizza_StoreV2.Models
         }
         public void AddCustomer(Customer customer) { Customers.Add(customer); }
         public List<Customer> GetAllCustomers() { return Customers; }
+        public Customer SearchCustomerByName(string customerName)
+        {
+
+            foreach (Customer customer in Customers)
+            {
+                if (customer != null)
+                {
+                    if (string.Equals(customer.CustomerName, customerName)) return customer;
+                }
+            }
+            return null;
+        }
         public Customer SearchForCustomerById(int customerId)
         {
-            Customer findCustomer = Customers[customerId - 1];
+            Customer findCustomer = Customers[customerId-1];
             return findCustomer;
         }
         public void RemoveCustomer(Customer customer, int id) 
