@@ -20,41 +20,37 @@ namespace Pizza_StoreV2.Services
             Orders = new List<Order>();
             Customer = new Customer();
             Pizza = new Pizza();
-            //Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = , Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
-            //Orders.Add(order1); 
-            //Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
-            //Orders.Add(order2);
-            foreach (Order order in Orders) { order.CalculateTotalPrice(); }
+            foreach (Order order in GetAllOrders()) { order.CalculateTotalPrice(); }
         }
         public int Count
         {
-            get { return Orders.Count; }
+            get { return GetAllOrders().Count; }
         }
-        public void AddOrder(Order order) { Orders.Add(order); }
+        public void AddOrder(Order order) { GetAllOrders().Add(order); }
         public void AddCustomerToOrder(int id, Customer customer)
         {
-            Orders[id].Customer = customer;
+            GetAllOrders()[id].Customer = customer;
         }
         public void DeleteOrderById(int id)
         {
-            Orders.RemoveAt(id - 1);
+            GetAllOrders().RemoveAt(id - 1);
         }
         public void AddNewCustomerToOrder(Customer customer)
         {
-            Orders.Add(new Order() { Customer = customer });
+            GetAllOrders().Add(new Order() { Customer = customer });
         }
         public void AddPizzaToOrder(int id, Pizza pizza)
         {
-            Orders[id].Pizza = pizza;
+            GetAllOrders()[id].Pizza = pizza;
         }
         public void AddNewPizzaToOrder(Pizza pizza)
         {
-            Orders.Add(new Order() { Pizza = pizza });
+            GetAllOrders().Add(new Order() { Pizza = pizza });
         }
         public List<Order> GetAllOrders() { return Orders; }
         public Order SearchForOrderById(int orderId)
         {
-            Order findOrder = Orders[orderId - 1];
+            Order findOrder = GetAllOrders()[orderId - 1];
             return findOrder;
         }
         public void UpdateOrder(Order order)

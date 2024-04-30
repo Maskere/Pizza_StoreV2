@@ -1,6 +1,8 @@
 [
   {
-    "CustomerName": Miki,
+    "CustomerName": "Miki",
+    "PhoneNumber": "40537194",
+    "Email": "Mstachkruse@gmail.com",
     "CustomerId": 1
   }
 ]

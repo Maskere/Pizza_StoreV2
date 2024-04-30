@@ -1,9 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pizza_StoreV2.Interface;
 using Pizza_StoreV2.Models;
-using System.Collections.Generic;
-
 namespace Pizza_StoreV2.Pages.Customers
 {
     public class GetAllCustomersModel : PageModel

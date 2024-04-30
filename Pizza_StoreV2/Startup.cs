@@ -31,6 +31,7 @@ namespace Pizza_StoreV2
             services.AddSingleton<IOrderRepository,FakeOrderRepository>();
             services.AddSingleton<ICustomerRepository,FakeCustomerRepository>();
             services.AddTransient<IPizzaRepository, PizzaJson>();
+            services.AddTransient<ICustomerRepository, CustomerJson>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

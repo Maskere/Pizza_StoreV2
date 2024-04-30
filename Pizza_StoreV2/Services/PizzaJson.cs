@@ -20,7 +20,12 @@ namespace Pizza_StoreV2.Services
             Pizzas.Add(pizza);
             Helpers.jsonFileWriter.WriteToJson(Pizzas,fileName);
         }
-
+        public void DeletePizzaById(int id) 
+        {
+            Pizzas = jsonFileReaderPizza.ReadJson(fileName);
+            Pizzas.RemoveAt(id-1);
+            Helpers.jsonFileWriter.WriteToJson(Pizzas,fileName);
+        }
         public List<Pizza> GetAllPizzas()
         {
             return Helpers.jsonFileReaderPizza.ReadJson(fileName);
@@ -45,7 +50,7 @@ namespace Pizza_StoreV2.Services
 
         public List<Pizza> GetPizzas()
         {
-            throw new NotImplementedException();
+            return Helpers.jsonFileReaderPizza.ReadJson(fileName);
         }
     }
 }

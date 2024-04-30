@@ -21,10 +21,11 @@ namespace Pizza_StoreV2.Services
             Customers.Add(customer);
             Helpers.jsonFileWriterCustomer.WriteToJson(Customers,fileName);
         }
-        public void DeleteACustomer(int CustomerId)
+        public void DeleteACustomerById(int id)
         {
-            Customers.Insert(CustomerId, new Customer() { CustomerName = "", CustomerId = CustomerId });
-            Customers.RemoveAt(CustomerId + 1);
+            Customers = jsonFileReaderCustomer.ReadJson(fileName);
+            Customers.RemoveAt(id-1);
+            Helpers.jsonFileWriterCustomer.WriteToJson(Customers,fileName);
         }
         public void RemoveCustomer(Customer customer)
         {
@@ -103,24 +104,17 @@ namespace Pizza_StoreV2.Services
         {
             Customers.Add(customer);
         }
-        public void AddCustomer11(Customer customer)
-        {
-            
-        }
-
         public List<Customer> GetAllCustomers()
         {
-            throw new System.NotImplementedException();
+            return Helpers.jsonFileReaderCustomer.ReadJson(fileName);
         }
-
         public Customer GetCustomer()
         {
             throw new System.NotImplementedException();
         }
-
         public List<Customer> GetCustomers()
         {
-            throw new System.NotImplementedException();
+            return Helpers.jsonFileReaderCustomer.ReadJson(fileName);
         }
     }
 }

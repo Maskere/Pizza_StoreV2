@@ -9,32 +9,16 @@ namespace Pizza_StoreV2.Models
         public List<Order> Orders { get; }
         public List<Pizza> Pizzas { get; }
         public List<Customer> Customers { get; }
-        private static FakeOrderRepository _instance;
         private int _totalPrice;
         private int NumberOfPizzasInOrder { get; set; }
         [BindProperty]
         public Pizza Pizza { get; set; }
         public Customer Customer { get; set; }
-
+        string fileName = "C:\\Users\\mstac\\Documents\\Pizza_StoreV2 - kopi\\Pizza_StoreV2\\Data\\jsonOrder.json";
         public FakeOrderRepository()
         {
             Orders = new List<Order>();
-            //Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
-            //Orders.Add(order1);
-            //Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
-            //Orders.Add(order2);
             foreach (Order order in Orders) { order.CalculateTotalPrice(); }
-        }
-        public static FakeOrderRepository Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new FakeOrderRepository();
-                }
-                return _instance;
-            }
         }
         public void AddOrder(Order order) { Orders.Add(order); }
         public void AddCustomerToOrder(int id,Customer customer) 
@@ -86,10 +70,9 @@ namespace Pizza_StoreV2.Models
                 _totalPrice = (int)Pizza.Price * order.NumberOfPizzasInOrder + 40;
             }
         }
-
         public List<Order> GetOrders()
         {
-            throw new System.NotImplementedException();
+            return Helpers.jsonFileReaderOrder.ReadJson(fileName);
         }
 
         public List<Pizza> GetPizzas()
