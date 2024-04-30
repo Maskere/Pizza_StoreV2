@@ -9,7 +9,6 @@ namespace Pizza_StoreV2.Interface
         List<Order> GetOrders();
         List<Pizza> GetPizzas();
         List<Customer> GetCustomers();
-        //private static FakeOrderRepository _instance;
         Pizza GetPizza();
         Customer GetCustomer();
         //public IOrderRepository()
@@ -20,17 +19,6 @@ namespace Pizza_StoreV2.Interface
         //    //Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
         //    //Orders.Add(order2);
         //    foreach (Order order in Orders) { order.CalculateTotalPrice(); }
-        //}
-        //public static FakeOrderRepository Instance
-        //{
-        //    get
-        //    {
-        //        if (_instance == null)
-        //        {
-        //            _instance = new FakeOrderRepository();
-        //        }
-        //        return _instance;
-        //    }
         //}
         public void AddOrder(Order order) { GetOrders().Add(order); }
         public void AddCustomerToOrder(int id, Customer customer)

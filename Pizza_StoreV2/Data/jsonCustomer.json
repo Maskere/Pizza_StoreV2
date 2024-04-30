@@ -1,6 +1,8 @@
 [
   {
-    "CustomerName": Miki,
-    "CustomerId": 1
+    "CustomerName": "Miki",
+    "CustomerId": 1,
+    "PhoneNumber": "",
+    "Email": ""
   }
 ]

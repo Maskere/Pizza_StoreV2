@@ -30,7 +30,6 @@ namespace Pizza_StoreV2.Models
         #region Properties
         [BindProperty]
         [Display(Name="Pizza price")]
-        [Required(ErrorMessage ="The '{0}' is required")]
         [Range(70,120,ErrorMessage ="Price must be between 70 and 120 kr.")]
         [DataType(DataType.Currency)]
         public int Price
@@ -45,7 +44,6 @@ namespace Pizza_StoreV2.Models
             set { _name = value; }
         }
         [Display(Name="Pizza ID")]
-        [Required(ErrorMessage ="The '{0}' is required")]
         [Range(1,10)]
         public int PizzaId
         {

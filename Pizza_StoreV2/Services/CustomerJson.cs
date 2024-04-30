@@ -9,12 +9,8 @@ namespace Pizza_StoreV2.Services
 {
     public class CustomerJson : ICustomerRepository
     {
-        string fileName = @"C:\Users\mstac\Documents\Pizza_StoreV2 - kopi\Pizza_StoreV2\Data\jsonCustomer.json";
+        string fileName = @"C:\Users\Mus\source\repos\Pizza_StoreV2-kopi\Pizza_StoreV2\Data\jsonCustomer.json";
         private List<Customer> Customers;
-        public int Count
-        {
-            get { return Customers.Count; }
-        }
         public void AddCustomer(Customer customer)
         {
             Customers = jsonFileReaderCustomer.ReadJson(fileName);
@@ -99,25 +95,14 @@ namespace Pizza_StoreV2.Services
             if (Customers[customerId] != null) { return null; }
             return customer;
         }
-        public void AddCustomer1(Customer customer)
-        {
-            Customers.Add(customer);
-        }
-        public void AddCustomer11(Customer customer)
-        {
-            
-        }
-
         public List<Customer> GetAllCustomers()
         {
-            throw new System.NotImplementedException();
+            return Helpers.jsonFileReaderCustomer.ReadJson(fileName);
         }
-
         public Customer GetCustomer()
         {
             throw new System.NotImplementedException();
         }
-
         public List<Customer> GetCustomers()
         {
             throw new System.NotImplementedException();

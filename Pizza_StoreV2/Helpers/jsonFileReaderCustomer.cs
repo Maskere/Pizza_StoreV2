@@ -12,7 +12,6 @@ using System.Runtime.Serialization.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-
 namespace Pizza_StoreV2.Helpers
 {
     public class jsonFileReaderCustomer

@@ -11,24 +11,20 @@ namespace Pizza_StoreV2.Pages.Orders
 {
     public class CreateOrderModel : PageModel
     {
-        //private FakeOrderRepository repo;
-        //private FakePizzaRepository pizzaRepo;
-        //private FakeCustomerRepository customerRepo;
         private IPizzaRepository pizzaRepo;
         private IOrderRepository orderRepo;
         private ICustomerRepository customerRepo;
         public SelectList PizzaList { get; set; }
         public SelectList CustomerList { get; set; }
-        public SelectList PizzaList { get; set; }
         [BindProperty]
         public Order Order { get; set; }
         public Customer Customer { get; set; }
         public Pizza Pizza { get; set; }
-        public CreateOrderModel() 
+        public CreateOrderModel(IOrderRepository Repo, IPizzaRepository PizzaRepo, ICustomerRepository CustomerRepo) 
         {
-            repo = FakeOrderRepository.Instance;
-            pizzaRepo = FakePizzaRepository.Instance;
-            customerRepo = FakeCustomerRepository.Instance;
+            orderRepo = Repo;
+            pizzaRepo = PizzaRepo;
+            customerRepo = CustomerRepo;
             PizzaList = new SelectList(pizzaRepo.GetAllPizzas());
             CustomerList = new SelectList(customerRepo.GetAllCustomers());
         }
@@ -38,9 +34,9 @@ namespace Pizza_StoreV2.Pages.Orders
             {
                 return Page();
             }
-            if (repo.Orders.Count < Order.OrderID)
+            if (orderRepo.GetAllOrders().Count < Order.OrderID)
             {
-                repo.AddOrder(Order);
+                orderRepo.AddOrder(Order);
             }
             return RedirectToPage("GetAllOrders");
         }

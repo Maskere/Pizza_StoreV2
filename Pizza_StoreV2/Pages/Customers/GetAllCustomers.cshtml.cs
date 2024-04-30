@@ -1,14 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pizza_StoreV2.Interface;
 using Pizza_StoreV2.Models;
-using System.Collections.Generic;
-
 namespace Pizza_StoreV2.Pages.Customers
 {
     public class GetAllCustomersModel : PageModel
     {
-        //private FakeCustomerRepository repo;
         private ICustomerRepository repo;
         [BindProperty(SupportsGet = true)]
         public string FilterCriteria { get; set; }
@@ -16,7 +17,7 @@ namespace Pizza_StoreV2.Pages.Customers
         {
             repo = Repo;
         }
-        public List<Customer> Customers { get; set; }
+        public List<Customer> Customers { get; private set; }
         public IActionResult OnGet()
         {
             Customers = repo.GetAllCustomers();

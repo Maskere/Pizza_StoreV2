@@ -7,7 +7,6 @@ namespace Pizza_StoreV2.Pages.Orders
 {
     public class GetAllOrdersModel : PageModel
     {
-        //private FakeOrderRepository repo;
         private IOrderRepository repo;
         public GetAllOrdersModel(IOrderRepository Repo) 
         {

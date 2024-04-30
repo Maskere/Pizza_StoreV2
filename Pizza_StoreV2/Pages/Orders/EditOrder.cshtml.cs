@@ -7,9 +7,6 @@ namespace Pizza_StoreV2.Pages.Orders
 {
     public class EditOrderModel : PageModel
     {
-        //private FakeOrderRepository repo;
-        //private FakeCustomerRepository customerRepo;
-        //private FakePizzaRepository pizzaRepo;
         private IOrderRepository orderRepo;
         private ICustomerRepository customerRepo;
         private IPizzaRepository pizzaRepo;
@@ -19,9 +16,9 @@ namespace Pizza_StoreV2.Pages.Orders
         public Pizza Pizza { get; set; }
         public EditOrderModel(IOrderRepository OrderRepo, ICustomerRepository CustomerRepo, IPizzaRepository PizzaRepo) 
         {
-            repo = FakeOrderRepository.Instance;
-            customerRepo = FakeCustomerRepository.Instance;
-            pizzaRepo = FakePizzaRepository.Instance;
+            orderRepo = OrderRepo;
+            customerRepo = CustomerRepo;
+            pizzaRepo = PizzaRepo;
         }
         public IActionResult OnGet(int id)
         {

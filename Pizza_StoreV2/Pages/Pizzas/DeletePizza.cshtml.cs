@@ -7,7 +7,6 @@ namespace Pizza_StoreV2.Pages.Pizzas
 {
     public class DeletePizzaModel : PageModel
     {
-        //private FakePizzaRepository repo;
         private IPizzaRepository repo;
         [BindProperty]
         public Pizza Pizza { get; set; }

@@ -7,7 +7,6 @@ namespace Pizza_StoreV2.Pages.Customers
 {
     public class EditCustomerModel : PageModel
     {
-        //private FakeCustomerRepository repo;
         private ICustomerRepository repo;
         [BindProperty]
         public Customer Customer { get; set; }

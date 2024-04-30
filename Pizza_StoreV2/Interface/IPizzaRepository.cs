@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pizza_StoreV2.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
-
 namespace Pizza_StoreV2.Interface
 {
     public interface IPizzaRepository
@@ -63,4 +62,3 @@ namespace Pizza_StoreV2.Interface
     }
 
 }
-

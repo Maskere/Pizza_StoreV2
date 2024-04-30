@@ -1,33 +1,17 @@
 ﻿using Pizza_StoreV2.Models;
-using System.Collections.Generic;
 using System;
-using Pizza_StoreV2.Interface;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 namespace Pizza_StoreV2.Services
 {
-    public class CustomerCatalog : ICustomerRepository
+    public class CustomerCatalog
     {
         List<Customer> Customers;
-        //private static CustomerCatalog _instance;
         public CustomerCatalog()
         {
             Customers = new List<Customer>();
-            Customers.Add(new Customer() { CustomerName = "Miki", CustomerId = 1, PhoneNumber = "4053 7194" });
-            Customers.Add(new Customer() { CustomerName = "Julie", CustomerId = 2, PhoneNumber = "4294 0853" });
-            Customers.Add(new Customer() { CustomerName = "Jais", CustomerId = 3 });
         }
-        //public static CustomerCatalog Instance 
-        //{
-        //    get 
-        //    {
-        //        if (_instance == null) 
-        //        {
-        //            _instance = new CustomerCatalog();
-
-        //        }
-        //        return _instance;
-        //    }
-        //}
         public int Count
         {
             get { return Customers.Count; }

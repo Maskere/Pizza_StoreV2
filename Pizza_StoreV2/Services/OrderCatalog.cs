@@ -9,6 +9,7 @@ namespace Pizza_StoreV2.Services
 {
     public class OrderCatalog
     {
+        List<Order> Orders;
         [BindProperty]
         public Customer Customer { get; set; }
         public Pizza Pizza { get; set; }
@@ -23,17 +24,17 @@ namespace Pizza_StoreV2.Services
             //Orders.Add(order2);
             foreach (Order order in Orders) { order.CalculateTotalPrice(); }
         }
-        public static OrderCatalog Instance {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new OrderCatalog();
+        //public static OrderCatalog Instance {
+        //    get
+        //    {
+        //        if (_instance == null)
+        //        {
+        //            _instance = new OrderCatalog();
 
-                }
-                return _instance;
-            }
-        }
+        //        }
+        //        return _instance;
+        //    }
+        //}
         public int Count
         {
             get { return Orders.Count; }

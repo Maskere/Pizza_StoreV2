@@ -13,13 +13,12 @@ namespace Pizza_StoreV2.Pages.Customers
 {
     public class CreateCustomerModel : PageModel
     {
-        //private FakeCustomerRepository repo;
         private ICustomerRepository repo;
         [BindProperty]
         public Customer Customer { get; set; }
         public CreateCustomerModel(ICustomerRepository repository)
         {
-            repo = FakeCustomerRepository.Instance;
+            repo = repository;
         }
         public IActionResult OnPost()
         {
@@ -27,9 +26,9 @@ namespace Pizza_StoreV2.Pages.Customers
             {
                 return Page();
             }
-            if(Repo.GetAllCustomers().Count()<Customer.CustomerId)
+            if(repo.GetAllCustomers().Count()<Customer.CustomerId)
             {
-                Repo.AddCustomer(Customer);
+                repo.AddCustomer(Customer);
             }
             return RedirectToPage("GetAllCustomers");
         }

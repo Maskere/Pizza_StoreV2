@@ -13,13 +13,11 @@ namespace Pizza_StoreV2.Pages.Pizzas
 {
     public class CreatePizzaModel : PageModel
     {
-        //private FakePizzaRepository repo;
         private IPizzaRepository repo;
         [BindProperty]
         public Pizza Pizza { get; set; }
         public CreatePizzaModel(IPizzaRepository repository)
         {
-            //repo = FakePizzaRepository.Instance;
             repo = repository;
         }
         public IActionResult OnPost()

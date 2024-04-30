@@ -7,7 +7,6 @@ namespace Pizza_StoreV2.Pages.Orders
 {
     public class DeleteOrderModel : PageModel
     {
-        //private FakeOrderRepository repo;
         private IOrderRepository repo;
         [BindProperty]
         public Order Order { get; set; }

@@ -6,12 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pizza_StoreV2.Interface;
 using Pizza_StoreV2.Models;
-
 namespace Pizza_StoreV2.Pages
 {
     public class GetAllPizzasModel : PageModel
     {
-        //private FakePizzaRepository repo;
         private IPizzaRepository repo;
         [BindProperty(SupportsGet =true)]
         public string FilterCriteria { get; set; }

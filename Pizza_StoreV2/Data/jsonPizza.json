@@ -13,5 +13,10 @@
     "Price": 75,
     "Name": "Salad",
     "PizzaId": 3
+  },
+  {
+    "Name": "Peperoni",
+    "Price": 75,
+    "PizzaId": 4
   }
 ]
