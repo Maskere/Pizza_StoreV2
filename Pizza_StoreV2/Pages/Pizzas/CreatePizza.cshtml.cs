@@ -8,7 +8,6 @@ using Pizza_StoreV2.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using Pizza_StoreV2.Interface;
-
 namespace Pizza_StoreV2.Pages.Pizzas
 {
     public class CreatePizzaModel : PageModel

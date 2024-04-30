@@ -12,14 +12,15 @@ using System.Runtime.Serialization.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
 namespace Pizza_StoreV2.Helpers
 {
-    public class jsonFileWriter
+    public class jsonFileReaderOrder
     {
-        public static void WriteToJson(List<Pizza>Pizzas,string JsonFileName) 
+        public static List<Order> ReadJson(string JsonFileName)
         {
-            string output = Newtonsoft.Json.JsonConvert.SerializeObject(Pizzas,Newtonsoft.Json.Formatting.Indented);
-            File.WriteAllText(JsonFileName,output);
+            string jsonString = File.ReadAllText(JsonFileName);
+            using (var jsonFileReader = File.OpenText(JsonFileName)) { return JsonConvert.DeserializeObject<List<Order>>(jsonString); }
         }
     }
 }

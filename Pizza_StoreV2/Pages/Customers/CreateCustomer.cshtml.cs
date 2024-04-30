@@ -8,7 +8,6 @@ using Pizza_StoreV2.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using Pizza_StoreV2.Interface;
-
 namespace Pizza_StoreV2.Pages.Customers
 {
     public class CreateCustomerModel : PageModel
@@ -26,7 +25,7 @@ namespace Pizza_StoreV2.Pages.Customers
             {
                 return Page();
             }
-            if(repo.GetAllCustomers().Count()<Customer.CustomerId)
+            if(repo.GetAllCustomers().Count<Customer.CustomerId)
             {
                 repo.AddCustomer(Customer);
             }

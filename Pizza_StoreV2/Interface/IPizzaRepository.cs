@@ -13,19 +13,11 @@ namespace Pizza_StoreV2.Interface
     {
         List<Pizza> GetPizzas();
         Pizza GetPizza();
-        //public IPizzaRepository()
-        //{
-        //    Pizzas = new List<Pizza>();
-        //    Pizzas.Add(new Pizza() { Name = "Calzone", Price = 95, PizzaId = 1 });
-        //    Pizzas.Add(new Pizza() { Name = "Peperoni", Price = 75, PizzaId = 2 });
-        //    Pizzas.Add(new Pizza() { Name = "Vesuvio", Price = 95, PizzaId = 3 });
-        //    Pizzas.Add(new Pizza() { Name = "Salad", Price = 75, PizzaId = 4 });
-        //}
         public void AddPizza(Pizza pizza);
         public List<Pizza> GetAllPizzas();
         public void DeletePizzaById(int id)
         {
-            GetPizzas().RemoveAt(id - 1);
+            GetPizzas().RemoveAt(id-1);
         }
         public Pizza SearchForPizzaById(int pizzaId)
         {

@@ -10,15 +10,16 @@ namespace Pizza_StoreV2.Models
         public List<Order> Orders { get; }
         public List<Pizza> Pizzas { get; }
         public List<Customer> Customers { get; }
+        private int _totalPrice;
+        private int NumberOfPizzasInOrder { get; set; }
         [BindProperty]
         public Pizza Pizza { get; set; }
         public Customer Customer { get; set; }
-        public Order Order { get; set; }
-        public int TotalPrice { get; set; }
-
+        string fileName = "C:\\Users\\mstac\\Documents\\Pizza_StoreV2 - kopi\\Pizza_StoreV2\\Data\\jsonOrder.json";
         public FakeOrderRepository()
         {
-            
+            Orders = new List<Order>();
+            foreach (Order order in Orders) { order.CalculateTotalPrice(); }
         }
         public void AddOrder(Order order) { Orders.Add(order); }
         public void AddCustomerToOrder(int id, Customer customer)
@@ -70,10 +71,9 @@ namespace Pizza_StoreV2.Models
                 TotalPrice = (int)Pizza.Price * order.NumberOfPizzasInOrder + 40;
             }
         }
-
         public List<Order> GetOrders()
         {
-            throw new System.NotImplementedException();
+            return Helpers.jsonFileReaderOrder.ReadJson(fileName);
         }
 
         public List<Pizza> GetPizzas()

@@ -8,6 +8,8 @@ namespace Pizza_StoreV2.Pages.Orders
     public class GetAllOrdersModel : PageModel
     {
         private IOrderRepository repo;
+        [BindProperty(SupportsGet =true)]
+        public string FilterCriteria { get; set; }
         public GetAllOrdersModel(IOrderRepository Repo) 
         {
             repo = Repo;
@@ -15,7 +17,8 @@ namespace Pizza_StoreV2.Pages.Orders
         public List<Order> Orders { get; private set; }
         public IActionResult OnGet()
         {
-            Orders = repo.GetAllOrders();
+            Orders = repo.GetOrders();
+            if (!string.IsNullOrEmpty(FilterCriteria)) { /*Orders = repo.FilterOrder(FilterCriteria);*/ }
             return Page();
         }
         public IActionResult OnPost()

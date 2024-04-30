@@ -11,15 +11,6 @@ namespace Pizza_StoreV2.Interface
         List<Customer> GetCustomers();
         Pizza GetPizza();
         Customer GetCustomer();
-        //public IOrderRepository()
-        //{
-        //    Orders = new List<Order>();
-        //    //Order order1 = new Order() { OrderID = 1, NumberOfPizzasInOrder = 1, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(1) };
-        //    //Orders.Add(order1);
-        //    //Order order2 = new Order() { OrderID = 2, NumberOfPizzasInOrder = 3, Pizza = PizzaCatalog.Instance.SearchForPizzaById(1), Customer = CustomerCatalog.Instance.SeachForCustomerById(2) };
-        //    //Orders.Add(order2);
-        //    foreach (Order order in Orders) { order.CalculateTotalPrice(); }
-        //}
         public void AddOrder(Order order) { GetOrders().Add(order); }
         public void AddCustomerToOrder(int id, Customer customer)
         {
@@ -63,12 +54,5 @@ namespace Pizza_StoreV2.Interface
                 }
             }
         }
-        //public void CalculateTotalPrice()
-        //{
-        //    foreach (Order order in Orders)
-        //    {
-        //        _totalPrice = (int)Pizza.Price * order.NumberOfPizzasInOrder + 40;
-        //    }
-        //}
     }
 }

@@ -7,19 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pizza_StoreV2.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+
 namespace Pizza_StoreV2.Interface
 {
     public interface ICustomerRepository
     {
         List<Customer> GetCustomers();
         Customer GetCustomer();
-        //public ICustomerRepository()
-        //{
-        //    Customers = new List<Customer>();
-        //    Customers.Add(new Customer() { CustomerName = "Miki", CustomerId = 1, PhoneNumber = "4053 7194" });
-        //    Customers.Add(new Customer() { CustomerName = "Julie", CustomerId = 2, PhoneNumber = "4294 0853" });
-        //    Customers.Add(new Customer() { CustomerName = "Jais", CustomerId = 3 });
-        //}
         public void AddCustomer(Customer customer);
         public List<Customer> GetAllCustomers();
         public Customer SearchForCustomerById(int customerId)
